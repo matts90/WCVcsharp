@@ -1,0 +1,32 @@
+body {
+    background: #E8EAEF;
+}
+
+/**
+ * Promo
+ */
+#promo {
+    background: #E8EAEF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f9d835), to(#f3961c));
+    background: -moz-linear-gradient(top, #f9d835, #f3961c);
+}
+
+/**
+ * Header
+ */
+#wrapper > header {
+    background: #32444E;
+    background: -moz-linear-gradient(top,  #32444E,  #4e6a7a);
+    background: -webkit-gradient(linear, left top, left bottom, from(#32444E), to(#4e6a7a));
+}
+
+/**
+ * Footer
+ */
+#wrapper > footer {
+    background: #222;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #111), color-stop(0.1, #434343), color-stop(1, #222));
+    background: -moz-linear-gradient(top,  #111 0%,  #434343 10%, #222 100%);
+    color: #ddd;
+}
+
