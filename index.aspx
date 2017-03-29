@@ -62,7 +62,7 @@
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Log in</a>
                 </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
+            <div id="collapseOne" class="panel-collapse collapse">
                 <div class="panel-body">
   <form id="form" action="profile.html" method="post" class="form-horizontal">
     			<div class="form-group">
