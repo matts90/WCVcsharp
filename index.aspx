@@ -43,7 +43,7 @@
 <form action="clockin.aspx" method="post" class="form-horizontal">
           <div class="form-group">
             <div class="col-sm-12">
-              <asp:TextBox runat="server" ID="username"  CSSclass="form-control"   ></asp:TextBox>
+              <asp:TextBox runat="server" ID="username"  placeholder="Username" required="required" CSSclass="form-control"></asp:TextBox>
             </div>
           </div>
           <div class="form-group">
