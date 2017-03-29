@@ -40,15 +40,15 @@
 
       </header>
     	<section class="panel-body">
-<form action="clockin.html" method="post" class="form-horizontal">
+<form action="clockin.aspx" method="post" class="form-horizontal">
           <div class="form-group">
             <div class="col-sm-12">
-              <input type="text" id="username"  class="form-control" value="" name="username" required="required" placeholder="Username" />
+              <asp:TextBox runat="server" ID="username"  CSSclass="form-control"   ></asp:TextBox>
             </div>
           </div>
           <div class="form-group">
             <div class="form-inline">
-              <button class="btn btn-default col-sm-3 col-sm-offset-3" type="submit">Clock In</button>
+              <asp:Button ID="btnClockIn" runat="server" class="btn btn-default col-sm-3 col-sm-offset-3" type="submit" Text="Clock In" OnClick="btnClockIn_Click"></asp:Button>
               <button class="btn btn-default" type="submit">Clock Out</button>
             </div>
           </div>
