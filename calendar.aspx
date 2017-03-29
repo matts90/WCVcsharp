@@ -40,6 +40,7 @@
                       <a class="navbar-brand" href="profile.html"><img src="../images/logo_short.png" alt="Wildlife Small Logo"></a>
                     </div>
     
+
                   
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul id="main-nav" class="nav navbar-nav">
