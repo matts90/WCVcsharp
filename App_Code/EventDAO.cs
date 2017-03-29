@@ -16,22 +16,29 @@ using System.Data.SqlClient;
 /// </summary>
 public class EventDAO
 {
+
     //change the connection string as per your database connection.
-    private static string connectionString = "Data Source=ASHIT\\SQLEXPRESS;Initial Catalog=amit;Integrated Security=True";
+    // private static string connectionString = "Data Source=ANDREW-HP\MSSMLBIZ;Initial Catalog=test1;Integrated Security=True";
+
+
+
 
     //this method retrieves all events within range start-end
     public static List<CalendarEvent> getEvents(DateTime start, DateTime end)
     {
+        System.Data.SqlClient.SqlConnection sc;
+        sc = new System.Data.SqlClient.SqlConnection();
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;";
+
 
         List<CalendarEvent> events = new List<CalendarEvent>();
-        SqlConnection con = new SqlConnection(connectionString);
-        SqlCommand cmd = new SqlCommand("SELECT event_id, description, title, event_start, event_end FROM event where event_start>=@start AND event_end<=@end", con);
+        SqlCommand cmd = new SqlCommand("SELECT event_id, description, title, event_start, event_end FROM event where event_start>=@start AND event_end<=@end", sc);
         cmd.Parameters.AddWithValue("@start", start);
         cmd.Parameters.AddWithValue("@end", end);
 
-        using (con)
+        using (sc)
         {
-            con.Open();
+            sc.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -56,14 +63,18 @@ public class EventDAO
     //this method updates the event title and description
     public static void updateEvent(int id, String title, String description)
     {
-        SqlConnection con = new SqlConnection(connectionString);
-        SqlCommand cmd = new SqlCommand("UPDATE event SET title=@title, description=@description WHERE event_id=@event_id", con);
+
+        System.Data.SqlClient.SqlConnection sc;
+        sc = new System.Data.SqlClient.SqlConnection();
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;";
+
+        SqlCommand cmd = new SqlCommand("UPDATE event SET title=@title, description=@description WHERE event_id=@event_id", sc);
         cmd.Parameters.AddWithValue("@title", title);
         cmd.Parameters.AddWithValue("@description", description);
         cmd.Parameters.AddWithValue("@event_id", id);
-        using (con)
+        using (sc)
         {
-            con.Open();
+            sc.Open();
             cmd.ExecuteNonQuery();
         }
 
@@ -73,14 +84,16 @@ public class EventDAO
     //this method updates the event start and end time
     public static void updateEventTime(int id, DateTime start, DateTime end)
     {
-        SqlConnection con = new SqlConnection(connectionString);
-        SqlCommand cmd = new SqlCommand("UPDATE event SET event_start=@event_start, event_end=@event_end WHERE event_id=@event_id", con);
+        System.Data.SqlClient.SqlConnection sc;
+        sc = new System.Data.SqlClient.SqlConnection();
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;"; ;
+        SqlCommand cmd = new SqlCommand("UPDATE event SET event_start=@event_start, event_end=@event_end WHERE event_id=@event_id", sc);
         cmd.Parameters.AddWithValue("@event_start", start);
         cmd.Parameters.AddWithValue("@event_end", end);
         cmd.Parameters.AddWithValue("@event_id", id);
-        using (con)
+        using (sc)
         {
-            con.Open();
+            sc.Open();
             cmd.ExecuteNonQuery();
         }
     }
@@ -88,12 +101,14 @@ public class EventDAO
     //this mehtod deletes event with the id passed in.
     public static void deleteEvent(int id)
     {
-        SqlConnection con = new SqlConnection(connectionString);
-        SqlCommand cmd = new SqlCommand("DELETE FROM event WHERE (event_id = @event_id)", con);
+        System.Data.SqlClient.SqlConnection sc;
+        sc = new System.Data.SqlClient.SqlConnection();
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;";
+        SqlCommand cmd = new SqlCommand("DELETE FROM event WHERE (event_id = @event_id)", sc);
         cmd.Parameters.AddWithValue("@event_id", id);
-        using (con)
+        using (sc)
         {
-            con.Open();
+            sc.Open();
             cmd.ExecuteNonQuery();
         }
     }
@@ -104,21 +119,23 @@ public class EventDAO
         //add event to the database and return the primary key of the added event row
 
         //insert
-        SqlConnection con = new SqlConnection(connectionString);
-        SqlCommand cmd = new SqlCommand("INSERT INTO event(title, description, event_start, event_end) VALUES(@title, @description, @event_start, @event_end)", con);
+        System.Data.SqlClient.SqlConnection sc;
+        sc = new System.Data.SqlClient.SqlConnection();
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;";
+        SqlCommand cmd = new SqlCommand("INSERT INTO event(title, description, event_start, event_end) VALUES(@title, @description, @event_start, @event_end)", sc);
         cmd.Parameters.AddWithValue("@title", cevent.title);
         cmd.Parameters.AddWithValue("@description", cevent.description);
         cmd.Parameters.AddWithValue("@event_start", cevent.start);
         cmd.Parameters.AddWithValue("@event_end", cevent.end);
 
         int key = 0;
-        using (con)
+        using (sc)
         {
-            con.Open();
+            sc.Open();
             cmd.ExecuteNonQuery();
 
             //get primary key of inserted row
-            cmd = new SqlCommand("SELECT max(event_id) FROM event where title=@title AND description=@description AND event_start=@event_start AND event_end=@event_end", con);
+            cmd = new SqlCommand("SELECT max(event_id) FROM event where title=@title AND description=@description AND event_start=@event_start AND event_end=@event_end", sc);
             cmd.Parameters.AddWithValue("@title", cevent.title);
             cmd.Parameters.AddWithValue("@description", cevent.description);
             cmd.Parameters.AddWithValue("@event_start", cevent.start);
