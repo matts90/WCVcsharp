@@ -20,7 +20,26 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- jQuery JS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+    <script src="js/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/global.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    <script src='../fullcalendar-3.3.0/lib/moment.min.js'></script>
+    <script src='../fullcalendar-3.3.0/lib/jquery.min.js'></script>
+    <script src='../fullcalendar-3.3.0/fullcalendar.min.js'></script>
+    <script type="text/javascript" src="js/global.js"></script>
+
+    <script type="text/javascript" src="calendarJavaScript.js"></script>
+  	
 
 <link rel="stylesheet" media="screen" href="css/style.css" />
 
@@ -44,14 +63,14 @@
                   
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul id="main-nav" class="nav navbar-nav">
-                            <li class="action">
+                            <li class="action"></li>
 
                             <li><a href="profile.aspx">Profile</a></li>
                             <li class="active"><a href="calendar.aspx">Calendar</a></li>
                             <li><a href="index.aspx">Sign Out</a></li>
                                 </ul>
-                            </li>
-                        </ul>
+                            
+                        
                       
                     </div>
                 </div>
@@ -97,114 +116,13 @@
     <footer>
         <div id="footer-inner" class="container">
             <div>
-                <span class="pull-right" class="footer" > &copy; 2017. All rights reserved. Owl Team
+                <span class="pull-right" id="footer" > &copy; 2017. All rights reserved. Owl Team
             </div>
         </div>
     </footer>
     <!-- render blocking scripts -->
 
-    <!-- jQuery JS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-    <script src="js/jquery-ui.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-    <!-- Main Script -->
-    <script src="js/global.js"></script>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-
-    <script type="text/javascript" src="js/global.js"></script>
-
-  	<script type='text/javascript'>
-  	    $(document).ready(function () {
-  	        var today = new Date();
-  	        var dd = today.getDate();
-  	        var mm = today.getMonth() + 1; //January is 0!
-  	        var yyyy = today.getFullYear();
-
-  	        if (dd < 10) {
-  	            dd = '0' + dd
-  	        }
-
-  	        if (mm < 10) {
-  	            mm = '0' + mm
-  	        }
-
-  	        today = mm + '/' + dd + '/' + yyyy;
-
-  	        $('#calendar').fullCalendar({
-  	            header: {
-  	                left: 'prev,next today',
-  	                center: 'title',
-  	                right: 'month,agendaWeek,agendaDay'
-  	            },
-  	            defaultDate: today,
-  	            editable: true,
-  	            eventLimit: true, // allow "more" link when too many events
-  	            events: [
-                    {
-                        title: 'All Day Event',
-                        start: today
-                    },
-                    {
-                        title: 'Long Event',
-                        start: '2015-02-07',
-                        end: '2015-02-10'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeating Event',
-                        start: '2015-02-09T16:00:00'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeating Event',
-                        start: '2015-02-16T16:00:00'
-                    },
-                    {
-                        title: 'Conference',
-                        start: '2015-02-11',
-                        end: '2015-02-13'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2015-02-12T10:30:00',
-                        end: '2015-02-12T12:30:00'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: '2015-02-12T12:00:00'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2015-02-12T14:30:00'
-                    },
-                    {
-                        title: 'Happy Hour',
-                        start: '2015-02-12T17:30:00'
-                    },
-                    {
-                        title: 'Dinner',
-                        start: '2015-02-12T20:00:00'
-                    },
-                    {
-                        title: 'Birthday Party',
-                        start: '2015-02-13T07:00:00'
-                    },
-                    {
-                        title: 'Click for Google',
-                        url: 'http://google.com/',
-                        start: '2015-02-28'
-                    }
-  	            ]
-  	        });
-
-  	    });
-  	</script> 
+   <div id='Div1'></div>
 </body>
     </asp:Panel>
 
