@@ -155,53 +155,53 @@
         <table cellpadding="0" class="style1">
             <tr>
                 <td class="alignRight">
-                    name:</td>
+                    Name:</td>
                 <td class="alignLeft">
                     <input id="eventName" type="text" /><br /></td>
             </tr>
             <tr>
                 <td class="alignRight">
-                    description:</td>
+                    Notes:</td>
                 <td class="alignLeft">
                     <textarea id="eventDesc" cols="30" rows="3" ></textarea></td>
             </tr>
             <tr>
                 <td class="alignRight">
-                    start:</td>
+                    Start Time:</td>
                 <td class="alignLeft">
                     <span id="eventStart"></span></td>
             </tr>
             <tr>
                 <td class="alignRight">
-                    end: </td>
+                    End Time: </td>
                 <td class="alignLeft">
                     <span id="eventEnd"></span><input type="hidden" id="eventId" /></td>
             </tr>
         </table>
     </div>
-    <div id="addDialog" style="font: 70% 'Trebuchet MS', sans-serif; margin: 50px;" title="Add Event">
+    <div id="addDialog" style="font: 70% 'Trebuchet MS', sans-serif; margin: 50px;" title="Assign Shift">
     <table cellpadding="0" class="style1">
             <tr>
                 <td class="alignRight">
-                    name:</td>
+                    Name:</td>
                 <td class="alignLeft">
                     <input id="addEventName" type="text" size="50" /><br /></td>
             </tr>
             <tr>
                 <td class="alignRight">
-                    description:</td>
+                    Notes:</td>
                 <td class="alignLeft">
                     <textarea id="addEventDesc" cols="30" rows="3" ></textarea></td>
             </tr>
             <tr>
                 <td class="alignRight">
-                    start:</td>
+                    Start Time:</td>
                 <td class="alignLeft">
                     <span id="addEventStartDate" ></span></td>
             </tr>
             <tr>
                 <td class="alignRight">
-                    end:</td>
+                    End Time:</td>
                 <td class="alignLeft">
                     <span id="addEventEndDate" ></span></td>
             </tr>
