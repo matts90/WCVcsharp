@@ -44,7 +44,7 @@
                             <li class="action">
 
                             <li class="active"><a href="profile.aspx">Profile</a></li>
-                            <li><a href="calendar.aspx">Calendar</a></li>
+                            <li><a href="calendar2.aspx">Calendar</a></li>
                             <li><a href="index.aspx">Sign Out</a></li>
                                 </ul>
                             </li>

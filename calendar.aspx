@@ -31,9 +31,7 @@
     <!-- Main Script -->
     <script src="js/global.js"></script>
 
-    <script src='../fullcalendar-3.3.0/lib/moment.min.js'></script>
-    <script src='../fullcalendar-3.3.0/lib/jquery.min.js'></script>
-    <script src='../fullcalendar-3.3.0/fullcalendar.min.js'></script>
+    
     <script type="text/javascript" src="js/global.js"></script>
 
     <script type="text/javascript" src="calendarJavaScript.js"></script>
