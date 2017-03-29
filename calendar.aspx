@@ -37,7 +37,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                       </button>
-                      <a class="navbar-brand" href="profile.html"><img src="../images/logo_short.png" alt="Wildlife Small Logo"></a>
+                      <a class="navbar-brand" href="profile.aspx"><img src="../images/logo_short.png" alt="Wildlife Small Logo"></a>
                     </div>
     
 
@@ -121,6 +121,20 @@
 
   	<script type='text/javascript'>
   	    $(document).ready(function () {
+  	        var today = new Date();
+  	        var dd = today.getDate();
+  	        var mm = today.getMonth() + 1; //January is 0!
+  	        var yyyy = today.getFullYear();
+
+  	        if (dd < 10) {
+  	            dd = '0' + dd
+  	        }
+
+  	        if (mm < 10) {
+  	            mm = '0' + mm
+  	        }
+
+  	        today = mm + '/' + dd + '/' + yyyy;
 
   	        $('#calendar').fullCalendar({
   	            header: {
@@ -128,13 +142,13 @@
   	                center: 'title',
   	                right: 'month,agendaWeek,agendaDay'
   	            },
-  	            defaultDate: '2015-02-12',
+  	            defaultDate: today,
   	            editable: true,
   	            eventLimit: true, // allow "more" link when too many events
   	            events: [
                     {
                         title: 'All Day Event',
-                        start: '2015-02-01'
+                        start: today
                     },
                     {
                         title: 'Long Event',
