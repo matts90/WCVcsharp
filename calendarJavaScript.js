@@ -1,4 +1,7 @@
-﻿$(document).ready(function () {
+﻿
+
+
+$(document).ready(function () {
 
     var today = new Date();
     var dd = today.getDate();

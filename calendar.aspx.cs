@@ -9,6 +9,7 @@ public partial class calendar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        ClientScript.RegisterStartupScript(this.GetType(), "msg", "<script language=javascript>myfunction();</script>");
+        
     }
 }
