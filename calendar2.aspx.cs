@@ -8,7 +8,16 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 
 public partial class calendar2 : System.Web.UI.Page
-{//this method only updates title and description
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        
+    }
+
+
+    
+    
+    //this method only updates title and description
     //this is called when a event is clicked on the calendar
     [System.Web.Services.WebMethod(true)]
     public static string UpdateEvent(CalendarEvent cevent)
