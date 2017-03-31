@@ -31,7 +31,7 @@
         }
         #calendar
         {
-            width: 800px;
+            width: auto;
             margin: 0 auto;
         }
         /* css for timepicker */
