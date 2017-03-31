@@ -201,6 +201,15 @@
             </tr>
             <tr>
                 <td class="alignRight">
+                    Start Time:</td>
+                <td class="alignLeft">
+                    <span id="Span1" >
+<asp:DropDownList ID="ddStartTime" runat="server">
+            </asp:DropDownList>
+                    </span></td>
+            </tr>
+            <tr>
+                <td class="alignRight">
                     End Time:</td>
                 <td class="alignLeft">
                     <span id="addEventEndDate" ></span></td>
