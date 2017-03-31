@@ -149,7 +149,7 @@ $(document).ready(function() {
                 };
 
                 if (checkForSpecialChars(eventToUpdate.title) || checkForSpecialChars(eventToUpdate.description)) {
-                    alert("please enter characters: A to Z, a to z, 0 to 9, spaces");
+                    alert("Please Enter Characters: A to Z, a to z, 0 to 9, spaces");
                 }
                 else {
                     PageMethods.UpdateEvent(eventToUpdate, updateSuccess);
@@ -163,7 +163,7 @@ $(document).ready(function() {
             },
             "delete": function() {
 
-                if (confirm("do you really want to delete this event?")) {
+                if (confirm("Confirm Delete")) {
 
                     PageMethods.deleteEvent($("#eventId").val(), deleteSuccess);
                     $(this).dialog("close");
@@ -192,7 +192,7 @@ $(document).ready(function() {
                 };
 
                 if (checkForSpecialChars(eventToAdd.title) || checkForSpecialChars(eventToAdd.description)) {
-                    alert("please enter characters: A to Z, a to z, 0 to 9, spaces");
+                    alert("Please Enter Characters: A to Z, a to z, 0 to 9, spaces");
                 }
                 else {
                     //alert("sending " + eventToAdd.title);
