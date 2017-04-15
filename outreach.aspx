@@ -28,13 +28,9 @@
 </head>
 <body>
     <div id="wrapper">
-<<<<<<< HEAD
 
 
         <header>
-=======
-        
->>>>>>> origin/master
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container">
                     <div class="navbar-header">
@@ -56,7 +52,7 @@
                     </div>
                 </div>
             </nav>
-        
+        </header>
         
         
         <section>
@@ -75,7 +71,6 @@
                                 </header>
                                 <section class="panel-body container-fluid">
                                     <div class="leading">
-<<<<<<< HEAD
 										<form 
                                             runat="server"
                                             method="post"
@@ -83,11 +78,6 @@
 											<header class="panel-heading">
                                                 <h2 class="panel-title">Basic Information</h2>
 											</header>
-=======
-										<form id="form" runat="server" method="post" enctype = "multipart/form-data"  class="form-horizontal panel panel-default" >
-											<header class="panel-heading"><h2 class="panel-title">Basic Information</h2></header>
-			
->>>>>>> origin/master
 											<fieldset class="panel-body">
 												<div class="form-group">
 													<label class="col-sm-2">First Name *</label>
@@ -573,13 +563,8 @@
 												</div>
 											</fieldset>
 											<footer class="panel-footer">
-<<<<<<< HEAD
                                                 <asp:Button ID="Button1" runat="server" Text="Submit form" class="btn btn-default"/>
                                                 <asp:Button ID="Button2" runat="server" Text="Reset" class="btn btn-default"/>
-=======
-												
-												<asp:Button ID="submit" runat="server" class="btn btn-default" type="submit" Text="Upload" Onclick="btnSubmit"></asp:Button>
->>>>>>> origin/master
 											</footer>
                                         </form>
 									</div>
