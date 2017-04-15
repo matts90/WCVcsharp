@@ -28,30 +28,27 @@
 </head>
 <body>
     <div id="wrapper">
+
+
         <header>
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container">
                     <div class="navbar-header">
-                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                       <a class="navbar-brand" href=""><img src="../484phpWork1/images/logo_short.png" alt="Wildlife Small Logo"></a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href=""><img src="../images/logo_short.png" alt="Wildlife Small Logo"></a>
                     </div>
-    
-                  
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul id="main-nav" class="nav navbar-nav">
                             <li class="action">
-
-                            <li class="active"><a href="forms.php">Application</a></li>
-							<li><a href="forms.php">Back</a></li>
-                                </ul>
+                                <li class="active"><a href="forms.aspx">Application</a></li>
+							    <li><a href="forms.aspx">Back</a></li>
                             </li>
                         </ul>
-                      
                     </div>
                 </div>
             </nav>
@@ -74,54 +71,89 @@
                                 </header>
                                 <section class="panel-body container-fluid">
                                     <div class="leading">
-										<form id="form" method="post" enctype = "multipart/form-data"  class="form-horizontal panel panel-default" >
-											<header class="panel-heading"><h2 class="panel-title">Basic Information</h2></header>
-			
+										<form 
+                                            runat="server"
+                                            method="post"
+                                            class="form-horizontal panel panel-default" >
+											<header class="panel-heading">
+                                                <h2 class="panel-title">Basic Information</h2>
+											</header>
 											<fieldset class="panel-body">
 												<div class="form-group">
 													<label class="col-sm-2">First Name *</label>
 													<div class="col-sm-10">
-                                                        <asp:TextBox runat="server" ID="firstName" required="required" CSSclass="form-control"></asp:TextBox>
-							
+                                                        <asp:TextBox
+                                                            runat="server"
+                                                            ID="firstName"
+                                                            required="required"
+                                                            CSSclass="form-control">
+                                                        </asp:TextBox>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-2">Last Name *</label>
 													<div class="col-sm-10">
-                                                        <asp:TextBox runat="server" ID="lastName" required="required" CSSclass="form-control"></asp:TextBox>
-													  
+                                                        <asp:TextBox
+                                                            runat="server"
+                                                            ID="lastName"
+                                                            required="required"
+                                                            CSSclass="form-control">
+                                                        </asp:TextBox>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-2">Create Password *</label>
 													<div class="col-sm-10">
-                                                        <asp:TextBox runat="server" ID="password" required="required" CSSclass="form-control"></asp:TextBox>
-													 
+                                                        <asp:TextBox
+                                                            runat="server"
+                                                            ID="password"
+                                                            required="required"
+                                                            CSSclass="form-control">
+                                                        </asp:TextBox>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-2">Confirm Password *</label>
 													<div class="col-sm-10">
-                                                        
-													 <asp:TextBox runat="server" ID="check" required="required" CSSclass="form-control"></asp:TextBox>
+													 <asp:TextBox
+                                                         runat="server"
+                                                         ID="check"
+                                                         required="required"
+                                                         CSSclass="form-control">
+													 </asp:TextBox>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-2">Email *</label>
 													<div class="col-sm-10">
-													  <asp:TextBox runat="server" ID="email" required="required" CSSclass="form-control"></asp:TextBox>
+													  <asp:TextBox
+                                                          runat="server"
+                                                          ID="email"
+                                                          required="required"
+                                                          CSSclass="form-control">
+													  </asp:TextBox>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-2">Phone *</label>
 													<div class="col-sm-10">
-													 <asp:TextBox runat="server" ID="phone" required="required" CSSclass="form-control"></asp:TextBox>
+													 <asp:TextBox
+                                                         runat="server"
+                                                         ID="phone"
+                                                         required="required"
+                                                         CSSclass="form-control">
+													 </asp:TextBox>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-2">Address *</label>
 													<div class="col-sm-10">
-													 <asp:TextBox runat="server" ID="address" required="required" CSSclass="form-control"></asp:TextBox>
+													 <asp:TextBox
+                                                         runat="server"
+                                                         ID="address"
+                                                         required="required"
+                                                         CSSclass="form-control">
+													 </asp:TextBox>
 													</div>
 												</div>
 												<div class="form-group">
@@ -306,8 +338,9 @@
 													<label class="col-sm-3">Are you able to work All Year or Seasonal?</label>
 													<div class="col-sm-7">
 														<div class="checkbox" >
-															<input type="radio" name="work" value="Y" <?php if (isset($_POST['work']) && $_POST['work'] == 'Y') echo ' checked="checked"';?>> All Year
-															<input type="radio" name="work" value="S" <?php if (isset($_POST['work']) && $_POST['work'] == 'S') echo ' checked="checked"';?>> Seasonal
+                                                            <asp:RadioButton ID="RadioButton11" runat="server" GroupName="work" value="All Year" text="All Year" />
+                                                        <br />
+                                                        <asp:RadioButton ID="RadioButton12" runat="server" GroupName="work" value="Seasonal" text="Seasonal"  />
 														</div>
 													</div>
 												</div>
@@ -316,31 +349,31 @@
 													<table style="width:10%">
 														<tr>
 															<td>Sundays</td>
-															<td><label><input type="checkbox" name="text1" value="sun1" /></label></td>
+                                                            <td><asp:CheckBox ID="CheckBox1" runat="server" value="Sunday"/></td>
 														</tr>
 														<tr>
 															<td>Mondays</td>
-															<td><label><input type="checkbox" name="text5" value="mon1" /></label></td>
+                                                            <td><asp:CheckBox ID="CheckBox2" runat="server" value="Monday"/></td>
 															</tr>
 														<tr>
 															<td>Tuesdays</td>
-															<td><label><input type="checkbox" name="text9" value="tue1" /></label></td>
+                                                            <td><asp:CheckBox ID="CheckBox3" runat="server" value="Tuesday"/></td>
 															</tr>
 														<tr>
 															<td>Wednesdays</td>
-															<td><label><input type="checkbox" name="text13" value="wed1" /></label></td>
+                                                            <td><asp:CheckBox ID="CheckBox4" runat="server" value="Wednesday"/></td>
 															</tr>
 														<tr>
 															<td>Thursdays</td>
-															<td><label><input type="checkbox" name="text17" value="thu1" /></label></td>
+                                                            <td><asp:CheckBox ID="CheckBox5" runat="server" value="Thursday"/></td>
 															</tr>
 														<tr>
 															<td>Fridays</td>
-															<td><label><input type="checkbox" name="text21" value="fri1" /></label></td>
+                                                            <td><asp:CheckBox ID="CheckBox6" runat="server" value="Friday"/></td>
 															</tr>
 														<tr>
 															<td>Saturdays</td>
-															<td><label><input type="checkbox" name="text25" value="sat1" /></label></td>
+                                                            <td><asp:CheckBox ID="CheckBox7" runat="server" value="Saturday"/></td>
 															</tr>
 													</table>
 												</div>
@@ -351,8 +384,9 @@
 													<label class="col-sm-3">Do you have a permit to rehabilitate wildlife in the state of Virginia?</label>
 													<div class="col-sm-7">
 														<div class="checkbox" >
-															<input type="radio" name="permit" value="Yes" <?php if (isset($_POST['permit']) && $_POST['permit'] == 'Yes') echo ' checked="checked"';?>> Yes
-															<input type="radio" name="permit" value="No" <?php if (isset($_POST['permit']) && $_POST['permit'] == 'No') echo ' checked="checked"';?>> No
+                                                            <asp:RadioButton ID="RadioButton1" runat="server" GroupName="permit" value="Yes" text="Yes" />
+                                                            <br />
+                                                            <asp:RadioButton ID="RadioButton2" runat="server" GroupName="permit" value="No" text="No"  />
 														</div>
 													</div>
 													
@@ -378,8 +412,9 @@
 													<label class="col-sm-3">Are you rabies vaccinated?</label>
 													<div class="col-sm-7">
 														<div class="checkbox">
-															<input type="radio" name="rabies" value="Yes" <?php if (isset($_POST['rabies']) && $_POST['rabies'] == 'Yes') echo ' checked="checked"';?>> Yes
-															<input type="radio" name="rabies" value="No" <?php if (isset($_POST['rabies']) && $_POST['rabies'] == 'No') echo ' checked="checked"';?>> No
+                                                            <asp:RadioButton ID="RadioButton3" runat="server" GroupName="rabies" value="Yes" text="Yes" />
+                                                            <br />
+                                                            <asp:RadioButton ID="RadioButton4" runat="server" GroupName="rabies" value="No" text="No"  />
 														</div>
 													</div>
 												</div>
@@ -477,43 +512,46 @@
 													<label class="col-sm-3">Are you able to lift 40 lbs?</label>
 													<div class="col-sm-7">
 														<div class="checkbox">
-															<input type="radio" name="fortyLBS" value="Yes" <?php if (isset($_POST['fortyLBS']) && $_POST['fortyLBS'] == 'Yes') echo ' checked="checked"';?>> Yes
-															<input type="radio" name="fortyLBS" value="No" <?php if (isset($_POST['fortyLBS']) && $_POST['fortyLBS'] == 'No') echo ' checked="checked"';?>> No
+                                                            <asp:RadioButton ID="RadioButton5" runat="server" GroupName="fortyLBS" value="Yes" text="Yes" />
+                                                            <br />
+                                                            <asp:RadioButton ID="RadioButton6" runat="server" GroupName="fortyLBS" value="No" text="No"  />
 														</div>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3">Do you have any allergies or physical limitations? If so, please explain.</label>
 													<div class="col-sm-9">
-														<input type="radio" name="limitationsASN" value="Yes" <?php if (isset($_POST['limitationsASN']) && $_POST['limitationsASN'] == 'Yes') echo ' checked="checked"';?>> Yes
-														<input type="radio" name="limitationsASN" value="No" <?php if (isset($_POST['limitationsASN']) && $_POST['limitationsASN'] == 'No') echo ' checked="checked"';?>> No
-														<textarea class="form-control" id = 'allergies' name = 'allergies' value="<?php if (isset($_POST['upload'])) echo ($_POST['allergies']);?>" rows="5" cols="90"></textarea>
+                                                        <asp:RadioButton ID="RadioButton7" runat="server" GroupName="limitationsASN" value="Yes" text="Yes" />
+                                                            <br />
+                                                            <asp:RadioButton ID="RadioButton8" runat="server" GroupName="limitationsASN" value="No" text="No"  />
+														<textarea class="form-control" id = 'allergies' name = 'allergies' rows="5" cols="90"></textarea>
 													</div>
 													<label class="col-sm-3">A volunteer may be required to perform outdoor work -- year-round and regardless of weather conditions. Are you able to work outside during all seasons? If not, what are your limitations?</label>
 													<div class="col-sm-9">
-														<input type="radio" name="limitationsWO" value="Yes" <?php if (isset($_POST['limitationsWO']) && $_POST['limitationsWO'] == 'Yes') echo ' checked="checked"';?>> Yes
-														<input type="radio" name="limitationsWO" value="No" <?php if (isset($_POST['limitationsWO']) && $_POST['limitationsWO'] == 'No') echo ' checked="checked"';?>> No
-														<textarea class="form-control" id = 'outside' name = 'outside' value="<?php if (isset($_POST['upload'])) echo ($_POST['allergies']);?>" rows="5" cols="90"></textarea>
+                                                        <asp:RadioButton ID="RadioButton9" runat="server" GroupName="limitationsWO" value="Yes" text="Yes" />
+                                                        <br />
+                                                        <asp:RadioButton ID="RadioButton10" runat="server" GroupName="limitationsWO" value="No" text="No"  />
+														<textarea class="form-control" id = 'outside' name = 'outside' rows="5" cols="90"></textarea>
 													</div>
 													<label class="col-sm-3">Why are you interested in volunteering as an outreach docent?</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'whyInterested' name = 'whyInterested' value="<?php if (isset($_POST['upload'])) echo ($_POST['whyInterested']);?>" rows="5" cols="90"></textarea>
+														<textarea class="form-control" id = 'whyInterested' name = 'whyInterested' rows="5" cols="90"></textarea>
 													</div>
 													<label class="col-sm-3">What’s an environmental or wildlife issue you feel passionately about, and why?</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'wildlifeIssue' name = 'wildlifeIssue' value="<?php if (isset($_POST['upload'])) echo ($_POST['wildlifeIssue']);?>" rows="5" cols="90"></textarea>
+														<textarea class="form-control" id = 'wildlifeIssue' name = 'wildlifeIssue' rows="5" cols="90"></textarea>
 													</div>
 													<label class="col-sm-3">Do you have prior experience speaking to the public? Please describe.</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'priorExperience' name ='priorExperience' value="<?php if (isset($_POST['upload'])) echo ($_POST['priorExperience']);?>" rows="5" cols="90"></textarea>
+														<textarea class="form-control" id = 'priorExperience' name ='priorExperience' rows="5" cols="90"></textarea>
 													</div>
 													<label class="col-sm-3">Do you belong to any animal rights groups (PETA, The Humane Society, etc.)? If so, which ones? </label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'animalRightsGroup' name ='animalRightsGroup' value="<?php if (isset($_POST['upload'])) echo ($_POST['animalRightsGroup']);?>" rows="5" cols="90"></textarea>
+														<textarea class="form-control" id = 'animalRightsGroup' name ='animalRightsGroup' rows="5" cols="90"></textarea>
 													</div>                  
 													<label class="col-sm-3">What do you think you’d bring to the outreach volunteer team?</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'valueAdded' name = 'valueAdded' value="<?php if (isset($_POST['upload'])) echo ($_POST['valueAdded']);?>" rows="5" cols="90"></textarea>
+														<textarea class="form-control" id = 'valueAdded' name = 'valueAdded' rows="5" cols="90"></textarea>
 													</div>
 													<div class="col-sm-12 col-sm-offset-3">Please upload a current resume.</div>
 													<div class="fileinput fileinput-new" data-provides="fileinput">
@@ -525,8 +563,8 @@
 												</div>
 											</fieldset>
 											<footer class="panel-footer">
-												<input class="btn btn-default" type="submit" name = 'upload' type="submit" id = 'upload' value="Submit form"/>
-												<button class="btn btn-default" type="reset">Reset</button>
+                                                <asp:Button ID="Button1" runat="server" Text="Submit form" class="btn btn-default"/>
+                                                <asp:Button ID="Button2" runat="server" Text="Reset" class="btn btn-default"/>
 											</footer>
                                         </form>
 									</div>
