@@ -9,10 +9,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
+
+            <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
 <title>Wildlife Center of Virginia Volunteers</title>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
@@ -49,7 +55,7 @@
           <div class="form-group">
             <div class="form-inline">
               <asp:Button ID="btnClockIn" runat="server" class="btn btn-default col-sm-3 col-sm-offset-3" type="submit" Text="Clock In" OnClick="btnClockIn_Click"></asp:Button>
-              <button class="btn btn-default" type="submit">Clock Out</button>
+              <asp:Button ID="btnClockOut" runat="server" class="btn btn-default" type="submit" Text="Clock Out" OnClick="btnClockOut_Click"></asp:Button>
             </div>
           </div>
 </form>
@@ -63,25 +69,51 @@
             </div>
             <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <form id="form" action="transporter.php" method="post" class="form-horizontal">
+                    <form action="transporter.aspx" method="post" class="form-horizontal">
     			<div class="form-group">
     			  <div class="col-sm-12">
-      				<input type="text" id="Text1"  class="form-control" value="" name="username" required="required" placeholder="Username" />
+                      <asp:TextBox runat="server" ID="usernameTransporter"  placeholder="Username" required="required" CSSclass="form-control"></asp:TextBox>
     				</div>
     			</div>
+                   
+                  <div class="form-group">
+    			  <div class="col-sm-12">
+                   
+                      
+                      <asp:TextBox runat="server" ID="dateTransporter"  placeholder="Date of Pickup (mm/dd/yyyy)" required="required" CSSclass="form-control"></asp:TextBox>
+                      
+      				
+    				</div>
+    			</div>
+
+                  <div class="form-group">
+    			  <div class="col-sm-12">
+                      <asp:TextBox runat="server" ID="address"  placeholder="Pick up Address" required="required" CSSclass="form-control"></asp:TextBox>
+    				</div>
+    			</div>
+
+                <div class="form-group">
+            <div class="col-sm-12">
+                <asp:TextBox runat="server" ID="species"  placeholder="Animal Species" required="required" CSSclass="form-control"></asp:TextBox>
+            </div>
+          </div>
+
+
     			<div class="form-group">
     			  <div class="col-sm-12">
-      				<input type="number" id="hours" class="form-control" value="" name="password" required="required" placeholder="Hours" />
+                      <asp:TextBox runat="server" ID="hours"  placeholder="Hours" required="required" CSSclass="form-control"></asp:TextBox>
       			</div>
     			</div>
     			<div class="form-group">
     			  <div class="col-sm-12">
-      				<input type="number" id="mileage" class="form-control" value="" name="password" required="required" placeholder="Mileage" />
+                      <asp:TextBox runat="server" ID="mileage"  placeholder="Mileage" required="required" CSSclass="form-control"></asp:TextBox>
       			</div>
     			</div>
+
+                        <div><a target="_blank" href="https://www.google.com/maps/dir///Wildlife+Center+of+VA,+South+Delphine+Avenue,+Waynesboro,+VA//@38.0808252,-78.9864842,13z/data=!4m11!4m10!1m0!1m0!1m5!1m1!1s0x89b3640efe4889c9:0xf47416d422aa90a9!2m2!1d-78.9137609!2d38.0392567!1m0!3e0">Click here to check how far you drove.</a></div>
     			<div class="form-group">
     			  <div class="col-sm-2 col-sm-offset-4">
-      				<button class="btn btn-default" type="submit">Submit</button>
+      				 <asp:Button ID="Transporter" runat="server" class="btn btn-default" type="submit" Text="Submit" OnClick="btnTransporter_Click"></asp:Button>
       			</div>
       		</div>
 </form>
