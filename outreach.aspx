@@ -84,9 +84,10 @@
 													<div class="col-sm-10">
                                                         <asp:TextBox
                                                             runat="server"
-                                                            ID="firstName"
+                                                            ID="tbfirstName"
                                                             required="required"
-                                                            CSSclass="form-control">
+                                                            CSSclass="form-control"
+                                                            type="text">
                                                         </asp:TextBox>
 													</div>
 												</div>
@@ -95,7 +96,7 @@
 													<div class="col-sm-10">
                                                         <asp:TextBox
                                                             runat="server"
-                                                            ID="lastName"
+                                                            ID="tblastName"
                                                             required="required"
                                                             CSSclass="form-control">
                                                         </asp:TextBox>
@@ -128,7 +129,7 @@
 													<div class="col-sm-10">
 													  <asp:TextBox
                                                           runat="server"
-                                                          ID="email"
+                                                          ID="tbemail"
                                                           required="required"
                                                           CSSclass="form-control">
 													  </asp:TextBox>
@@ -159,13 +160,17 @@
 												<div class="form-group">
 													<label class="col-sm-2">City *</label>
 													<div class="col-sm-2">
-													  <asp:TextBox runat="server" ID="city" required="required" CSSclass="form-control"></asp:TextBox>
+													  <asp:TextBox
+                                                          runat="server"
+                                                          ID="city" 
+                                                          required="required"
+                                                          CSSclass="form-control">
+													  </asp:TextBox>
 													</div>
 													<label class="col-sm-1">State *</label>
 													<div class="col-sm-3">
-													
-														
-														<select id="state" name="D1">
+
+													    <select id="homestate" runat="server">
                                                             <option value="Virginia">Virginia</option>
 															<option value="Alabama">Alabama</option>
 															<option value="Alaska">Alaska</option>
@@ -217,18 +222,22 @@
 															<option value="Wisconsin">Wisconsin</option>
 															<option value="Wyoming">Wyoming</option>
                                                         </select> 
-														
 													</div>
 													<label class="col-sm-2">Zip Code *</label>
 													<div class="col-sm-2">
-													  <asp:TextBox runat="server" ID="zip" required="required" CSSclass="form-control"></asp:TextBox>
+													  <asp:TextBox
+                                                          runat="server"
+                                                          ID="zip"
+                                                          required="required"
+                                                          CSSclass="form-control">
+													  </asp:TextBox>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-2">Date of Birth *</label>
 													<div class="col-sm-10">
-														<select name="DOBMonth">
-															<option>- Month -</option> 				<!-- Make required -->
+														<select id="DOBMonth" runat="server">
+															<option value="00">- Month -</option> 				
 															<option value="01">January</option>
 															<option value="02">February</option>
 															<option value="03">March</option>
@@ -242,8 +251,8 @@
 															<option value="11">November</option>
 															<option value="12">December</option>
 														</select>
-														<select name="DOBDay">
-															<option>- Day -</option> 				<!-- Make required -->
+														<select id="DOBDay" runat="server">
+															<option value="">- Day -</option> 				
 															<option value="01">1</option>
 															<option value="02">2</option>
 															<option value="03">3</option>
@@ -276,8 +285,8 @@
 															<option value="30">30</option>
 															<option value="31">31</option>
 														</select>
-														<select name="DOBYear">
-															<option> - Year - </option>										<!-- Make required -->
+														<select id="DOBYear" runat="server">
+															<option value=""> - Year - </option>										
 															<option value="1999">1999</option>
 															<option value="1998">1998</option>
 															<option value="1997">1997</option>
@@ -338,9 +347,19 @@
 													<label class="col-sm-3">Are you able to work All Year or Seasonal?</label>
 													<div class="col-sm-7">
 														<div class="checkbox" >
-                                                            <asp:RadioButton ID="RadioButton11" runat="server" GroupName="work" value="All Year" text="All Year" />
+                                                            <asp:RadioButton
+                                                                ID="RadioButton11"
+                                                                runat="server"
+                                                                GroupName="work"
+                                                                value="All Year"
+                                                                text="All Year" />
                                                         <br />
-                                                        <asp:RadioButton ID="RadioButton12" runat="server" GroupName="work" value="Seasonal" text="Seasonal"  />
+                                                        <asp:RadioButton
+                                                            ID="RadioButton12"
+                                                            runat="server"
+                                                            GroupName="work"
+                                                            value="Seasonal"
+                                                            text="Seasonal"  />
 														</div>
 													</div>
 												</div>
@@ -349,31 +368,52 @@
 													<table style="width:10%">
 														<tr>
 															<td>Sundays</td>
-                                                            <td><asp:CheckBox ID="CheckBox1" runat="server" value="Sunday"/></td>
+                                                            <td><asp:CheckBox
+                                                                ID="CheckBox1"
+                                                                runat="server"
+                                                                value="Sunday"/></td>
 														</tr>
 														<tr>
 															<td>Mondays</td>
-                                                            <td><asp:CheckBox ID="CheckBox2" runat="server" value="Monday"/></td>
+                                                            <td><asp:CheckBox
+                                                                ID="CheckBox2"
+                                                                runat="server" 
+                                                                value="Monday"/></td>
 															</tr>
 														<tr>
 															<td>Tuesdays</td>
-                                                            <td><asp:CheckBox ID="CheckBox3" runat="server" value="Tuesday"/></td>
+                                                            <td><asp:CheckBox
+                                                                ID="CheckBox3" 
+                                                                runat="server" 
+                                                                value="Tuesday"/></td>
 															</tr>
 														<tr>
 															<td>Wednesdays</td>
-                                                            <td><asp:CheckBox ID="CheckBox4" runat="server" value="Wednesday"/></td>
+                                                            <td><asp:CheckBox 
+                                                                ID="CheckBox4" 
+                                                                runat="server" 
+                                                                value="Wednesday"/></td>
 															</tr>
 														<tr>
 															<td>Thursdays</td>
-                                                            <td><asp:CheckBox ID="CheckBox5" runat="server" value="Thursday"/></td>
+                                                            <td><asp:CheckBox 
+                                                                ID="CheckBox5" 
+                                                                runat="server" 
+                                                                value="Thursday"/></td>
 															</tr>
 														<tr>
 															<td>Fridays</td>
-                                                            <td><asp:CheckBox ID="CheckBox6" runat="server" value="Friday"/></td>
+                                                            <td><asp:CheckBox 
+                                                                ID="CheckBox6" 
+                                                                runat="server"
+                                                                value="Friday"/></td>
 															</tr>
 														<tr>
 															<td>Saturdays</td>
-                                                            <td><asp:CheckBox ID="CheckBox7" runat="server" value="Saturday"/></td>
+                                                            <td><asp:CheckBox 
+                                                                ID="CheckBox7" 
+                                                                runat="server" 
+                                                                value="Saturday"/></td>
 															</tr>
 													</table>
 												</div>
@@ -384,9 +424,17 @@
 													<label class="col-sm-3">Do you have a permit to rehabilitate wildlife in the state of Virginia?</label>
 													<div class="col-sm-7">
 														<div class="checkbox" >
-                                                            <asp:RadioButton ID="RadioButton1" runat="server" GroupName="permit" value="Yes" text="Yes" />
+                                                            <asp:RadioButton 
+                                                                ID="RadioButton1" 
+                                                                runat="server" 
+                                                                GroupName="permit" 
+                                                                text="Yes" />
                                                             <br />
-                                                            <asp:RadioButton ID="RadioButton2" runat="server" GroupName="permit" value="No" text="No"  />
+                                                            <asp:RadioButton 
+                                                                ID="RadioButton2" 
+                                                                runat="server" 
+                                                                GroupName="permit" 
+                                                                text="No"  />
 														</div>
 													</div>
 													
@@ -394,7 +442,7 @@
 												<div class="form-group">
 													<label class="col-sm-3">If so, what category? Please upload a copy of your permit.</label>
 														<div>
-															<select name="permitCategory">
+															<select id="permitCategory" runat="server">
 																<option name="permitCategory" value="">--</option>
 																<option name="permitCategory" value="1">1</option>
 																<option name="permitCategory" value="2">2</option>
@@ -412,17 +460,27 @@
 													<label class="col-sm-3">Are you rabies vaccinated?</label>
 													<div class="col-sm-7">
 														<div class="checkbox">
-                                                            <asp:RadioButton ID="RadioButton3" runat="server" GroupName="rabies" value="Yes" text="Yes" />
+                                                            <asp:RadioButton 
+                                                                ID="RadioButton3" 
+                                                                runat="server" 
+                                                                GroupName="rabies" 
+                                                                value="Yes"
+                                                                text="Yes" />
                                                             <br />
-                                                            <asp:RadioButton ID="RadioButton4" runat="server" GroupName="rabies" value="No" text="No"  />
+                                                            <asp:RadioButton 
+                                                                ID="RadioButton4" 
+                                                                runat="server" 
+                                                                GroupName="rabies" 
+                                                                value="No" 
+                                                                text="No"  />
 														</div>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3">If so, how recently? Please provide proof of vaccination. Upload an attachment.</label>
 														<div>
-															<select name="VacMonth">
-																<option>- Month -</option>
+															<select id="VacMonth" runat="server">
+																<option value="">- Month -</option>
 																<option value="01">January</option>
 																<option value="02">February</option>
 																<option value="03">March</option>
@@ -436,8 +494,8 @@
 																<option value="11">November</option>
 																<option value="12">December</option>
 															</select>
-															<select name="VacDay">
-																<option>- Day -</option>
+															<select id="VacDay" runat="server">
+																<option value="">- Day -</option>
 																<option value="01">1</option>
 																<option value="02">2</option>
 																<option value="03">3</option>
@@ -470,8 +528,8 @@
 																<option value="30">30</option>
 																<option value="31">31</option>
 															</select>
-															<select name="VacYear">
-																<option> - Year - </option>
+															<select id="VacYear" runat="server">
+																<option value=""> - Year - </option>
 																<option value="2017">2017</option>
 																<option value="2016">2016</option>
 																<option value="2015">2015</option>
@@ -503,7 +561,10 @@
 														</div>
 														<div class="fileinput fileinput-new" data-provides="fileinput">
 															<span class="btn btn-default btn-file">
-																<input name="rabbiesDocumentation" id = "rabbiesDocumentation" type="file" multiple /></span>
+																<input
+                                                                    name="rabbiesDocumentation" 
+                                                                    id = "rabbiesDocumentation" 
+                                                                    type="file" multiple /></span>
 															<span class="fileinput-filename"></span>
 															<span class="fileinput-new"></span>
 														</div>
@@ -512,59 +573,138 @@
 													<label class="col-sm-3">Are you able to lift 40 lbs?</label>
 													<div class="col-sm-7">
 														<div class="checkbox">
-                                                            <asp:RadioButton ID="RadioButton5" runat="server" GroupName="fortyLBS" value="Yes" text="Yes" />
+                                                            <asp:RadioButton 
+                                                                ID="RadioButton5" 
+                                                                runat="server" 
+                                                                GroupName="fortyLBS" 
+                                                                value="Yes" 
+                                                                text="Yes" />
                                                             <br />
-                                                            <asp:RadioButton ID="RadioButton6" runat="server" GroupName="fortyLBS" value="No" text="No"  />
+                                                            <asp:RadioButton 
+                                                                ID="RadioButton6" 
+                                                                runat="server" 
+                                                                GroupName="fortyLBS" 
+                                                                value="No" 
+                                                                text="No"  />
 														</div>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3">Do you have any allergies or physical limitations? If so, please explain.</label>
 													<div class="col-sm-9">
-                                                        <asp:RadioButton ID="RadioButton7" runat="server" GroupName="limitationsASN" value="Yes" text="Yes" />
+                                                        <asp:RadioButton 
+                                                            ID="RadioButton7" 
+                                                            runat="server" 
+                                                            GroupName="limitationsASN" 
+                                                            value="Yes" 
+                                                            text="Yes" />
                                                             <br />
-                                                            <asp:RadioButton ID="RadioButton8" runat="server" GroupName="limitationsASN" value="No" text="No"  />
-														<textarea class="form-control" id = 'allergies' name = 'allergies' rows="5" cols="90"></textarea>
+                                                        <asp:RadioButton 
+                                                            ID="RadioButton8" 
+                                                            runat="server" 
+                                                            GroupName="limitationsASN" 
+                                                            value="No" 
+                                                            text="No"  />
+                                                        <asp:TextBox
+                                                            ID="TextBox1"
+                                                            runat="server"
+                                                            class="form-control"
+                                                            TextMode="MultiLine">
+                                                        </asp:TextBox>
 													</div>
 													<label class="col-sm-3">A volunteer may be required to perform outdoor work -- year-round and regardless of weather conditions. Are you able to work outside during all seasons? If not, what are your limitations?</label>
 													<div class="col-sm-9">
-                                                        <asp:RadioButton ID="RadioButton9" runat="server" GroupName="limitationsWO" value="Yes" text="Yes" />
+                                                        <asp:RadioButton 
+                                                            ID="RadioButton9" 
+                                                            runat="server" 
+                                                            GroupName="limitationsWO" 
+                                                            value="Yes" 
+                                                            text="Yes" />
                                                         <br />
-                                                        <asp:RadioButton ID="RadioButton10" runat="server" GroupName="limitationsWO" value="No" text="No"  />
-														<textarea class="form-control" id = 'outside' name = 'outside' rows="5" cols="90"></textarea>
+                                                        <asp:RadioButton 
+                                                            ID="RadioButton10" 
+                                                            runat="server" 
+                                                            GroupName="limitationsWO" 
+                                                            value="No" 
+                                                            text="No"  />
+														 <asp:TextBox
+                                                            ID="TextBox2"
+                                                            runat="server"
+                                                            class="form-control"
+                                                            TextMode="MultiLine">
+                                                        </asp:TextBox>
 													</div>
 													<label class="col-sm-3">Why are you interested in volunteering as an outreach docent?</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'whyInterested' name = 'whyInterested' rows="5" cols="90"></textarea>
+														<asp:TextBox
+                                                            ID="TextBox7"
+                                                            runat="server"
+                                                            class="form-control"
+                                                            TextMode="MultiLine">
+                                                        </asp:TextBox>
 													</div>
 													<label class="col-sm-3">What’s an environmental or wildlife issue you feel passionately about, and why?</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'wildlifeIssue' name = 'wildlifeIssue' rows="5" cols="90"></textarea>
+														 <asp:TextBox
+                                                            ID="TextBox3"
+                                                            runat="server"
+                                                            class="form-control"
+                                                            TextMode="MultiLine">
+                                                        </asp:TextBox>
 													</div>
 													<label class="col-sm-3">Do you have prior experience speaking to the public? Please describe.</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'priorExperience' name ='priorExperience' rows="5" cols="90"></textarea>
+														 <asp:TextBox
+                                                            ID="TextBox4"
+                                                            runat="server"
+                                                            class="form-control"
+                                                            TextMode="MultiLine">
+                                                        </asp:TextBox>
 													</div>
 													<label class="col-sm-3">Do you belong to any animal rights groups (PETA, The Humane Society, etc.)? If so, which ones? </label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'animalRightsGroup' name ='animalRightsGroup' rows="5" cols="90"></textarea>
+														 <asp:TextBox
+                                                            ID="TextBox5"
+                                                            runat="server"
+                                                            class="form-control"
+                                                            TextMode="MultiLine">
+                                                        </asp:TextBox>
 													</div>                  
 													<label class="col-sm-3">What do you think you’d bring to the outreach volunteer team?</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" id = 'valueAdded' name = 'valueAdded' rows="5" cols="90"></textarea>
+														 <asp:TextBox
+                                                            ID="TextBox6"
+                                                            runat="server"
+                                                            class="form-control"
+                                                            TextMode="MultiLine">
+                                                        </asp:TextBox>
 													</div>
 													<div class="col-sm-12 col-sm-offset-3">Please upload a current resume.</div>
 													<div class="fileinput fileinput-new" data-provides="fileinput">
 															<span class="btn btn-default btn-file">
-																<input name="userFile" id = "userFile" type="file" multiple /></span>
+																<input 
+                                                                    name="userFile" 
+                                                                    id = "userFile" 
+                                                                    type="file" 
+                                                                    multiple /></span>
 															<span class="fileinput-filename"></span>
 															<span class="fileinput-new"></span>
 														</div>
 												</div>
 											</fieldset>
 											<footer class="panel-footer">
-                                                <asp:Button ID="Button1" runat="server" Text="Submit form" class="btn btn-default"/>
-                                                <asp:Button ID="Button2" runat="server" Text="Reset" class="btn btn-default"/>
+                                                <asp:Button 
+                                                    ID="Button1" 
+                                                    runat="server" 
+                                                    Text="Submit form" 
+                                                    class="btn btn-default"
+                                                    OnClick="Button1_Click"/>
+                                                <asp:Button 
+                                                    ID="Button2"
+                                                    runat="server"
+                                                    Text="Reset" 
+                                                    class="btn btn-default" 
+                                                    OnClick="Button2_Click"/>
 											</footer>
                                         </form>
 									</div>
@@ -584,7 +724,7 @@
     <footer>
         <div id="footer-inner" class="container">
             <div>
-                <span class="pull-right" class="footer" > &copy; 2017. All rights reserved. Owl Team
+                <span class="pull-right footer" > &copy; 2017. All rights reserved. Owl Team
             </div>
         </div>
     </footer>
