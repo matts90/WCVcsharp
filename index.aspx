@@ -20,6 +20,14 @@
 
 
 
+
+<!-- I ADDED THE EnableEventValidation="false" AT THE TOP, not necessarily needed, preferable that we don't have it -Zach -->
+
+
+
+
+
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 
@@ -98,7 +106,13 @@
                         class="form-horizontal">
     			<div class="form-group">
     			  <div class="col-sm-12">
-                      <asp:TextBox runat="server" ID="usernameTransporter"  placeholder="Username" required="required" CSSclass="form-control"></asp:TextBox>
+                      <asp:TextBox runat="server"
+                          ID="usernameTransporter" 
+                          placeholder="Username"
+                          required="required"
+                          CSSclass="form-control">
+
+                      </asp:TextBox>
     				</div>
     			</div>
                    
@@ -139,7 +153,14 @@
                         <div><a target="_blank" href="https://www.google.com/maps/dir///Wildlife+Center+of+VA,+South+Delphine+Avenue,+Waynesboro,+VA//@38.0808252,-78.9864842,13z/data=!4m11!4m10!1m0!1m0!1m5!1m1!1s0x89b3640efe4889c9:0xf47416d422aa90a9!2m2!1d-78.9137609!2d38.0392567!1m0!3e0">Click here to check how far you drove.</a></div>
     			<div class="form-group">
     			  <div class="col-sm-2 col-sm-offset-4">
-      				 <asp:Button ID="Transporter" runat="server" class="btn btn-default" type="submit" Text="Submit" OnClick="btnTransporter_Click"></asp:Button>
+      				 <asp:Button ID="Transporter"
+                           runat="server"
+                           class="btn btn-default"
+                           type="submit"
+                           Text="Submit"
+                           OnClick="btnTransporter_Click">
+
+      				 </asp:Button>
       			</div>
       		</div>
 </form>
