@@ -1,0 +1,552 @@
+DROP TABLE Events2;
+DROP TABLE Events;
+DROP EVENT clock_out;
+DROP EVENT status;
+DROP TRIGGER lastVolunteered;
+DROP TRIGGER lastVolunteered2;
+DROP TABLE AvailabilityTransporter;
+DROP TABLE VolAvailabilityTime;
+DROP TABLE AppAvailabilityTime;
+DROP TABLE AvailabilityDay;
+DROP TABLE AvailabilityPerson;
+DROP TABLE VolShift;
+DROP TABLE DayOfTheWeek;
+DROP TABLE LogHours;
+DROP TABLE OtherVolunteers;
+DROP TABLE TaskCheck;
+DROP TABLE AnimalCareTask;
+DROP TABLE AnimalCare;
+DROP TABLE VetTeam;
+DROP TABLE LogTransport;
+DROP TABLE Transporter;
+DROP TABLE Bird;
+DROP TABLE Reptile;
+DROP TABLE Animal;
+DROP TABLE Outreach;
+DROP TABLE ICE;
+DROP TABLE TransporterApp;
+DROP TABLE VetTeamApp;
+DROP TABLE AnimalCareApp;
+DROP TABLE OutreachApp;
+DROP TABLE Department;
+DROP TABLE Documentation;
+DROP TABLE Person;
+
+CREATE TABLE Person (
+Person_ID							INTEGER NOT NULL IDENTITY,
+Person_UserName						VARCHAR(254) NOT NULL,
+Person_PasswordHash					CHAR(60),
+Person_UserType						VARCHAR(30),
+Person_FirstName					VARCHAR(20),
+Person_MiddleName					CHAR(1),
+Person_LastName						VARCHAR(20),
+Person_Email						VARCHAR(254),
+Person_PhonePrimary					VARCHAR(12),
+Person_PhoneAlternate				VARCHAR(12),
+Person_StreetAddress				VARCHAR(50),
+Person_City							VARCHAR(40),
+Person_County						VARCHAR(40),
+Person_State						VARCHAR(25),
+Person_Country						VARCHAR(70),
+Person_Zipcode						CHAR(5),
+Person_DateOfBirth					DATE,
+Person_Status						VARCHAR(20),
+Person_RabiesYN						VARCHAR(3),
+Person_RabbiesVaccinationDate		DATE,
+Person_RehabilitatePermitCategory	CHAR(1),
+Person_AllergiesYN					VARCHAR(3),
+Person_Allergies					VARCHAR(2000),
+Person_WorkOutside					VARCHAR(3),
+Person_OutsideLimitations			VARCHAR(2000),
+Person_Lift40Lbs					VARCHAR(3),
+Person_TotalVolunteeredHours		DECIMAL(10,2),
+Person_LastVolunteered				DATE,
+Person_RehabilitateYN				VARCHAR(3),				
+Person_TeamLeadNotes				VARCHAR (2000),
+CONSTRAINT PK_Person PRIMARY KEY (Person_ID));
+
+CREATE TABLE Documentation (
+Documentation_ID				INTEGER	NOT NULL IDENTITY,
+Documentation_PersonID			INTEGER	NOT NULL,
+Documentation_TypeOfDocument	VARCHAR(40),
+Documentation_FileName			VARCHAR(40),
+Documentation_FileType			VARCHAR(40),
+Documentation_FileSize			BIGINT,
+Documentation_FileContent		 VARBINARY(MAX),
+Documentation_DocumentNotes		VARCHAR(2000),
+CONSTRAINT PK_Documentation PRIMARY KEY (Documentation_ID),
+CONSTRAINT FK_Documentation_PersonID FOREIGN KEY (Documentation_PersonID) REFERENCES Person(Person_ID));
+
+CREATE TABLE Department (
+Department_ID	    INTEGER	NOT NULL,
+Department_Name	    VARCHAR(40),
+CONSTRAINT PK_Department PRIMARY KEY (Department_ID));
+
+INSERT INTO Department VALUES ('1','Outreach');
+INSERT INTO Department VALUES ('2','Animal Care');
+INSERT INTO Department VALUES ('3','VetTeam');
+INSERT INTO Department VALUES ('4','Transporter');
+INSERT INTO Department VALUES ('5','Other');
+
+CREATE TABLE OutreachApp (
+OutreachApp_ID							INTEGER NOT NULL IDENTITY,
+OutreachApp_PersonID					INTEGER NOT NULL,
+OutreachApp_WhyInterested				VARCHAR(2000),
+OutreachApp_PassionateWildlifeIssue		VARCHAR(2000),
+OutreachApp_ExperiencePublicSpeaking	VARCHAR(2000),
+OutreachApp_BelongToAnimalRightsGroup	VARCHAR(2000),
+OutreachApp_BringToTeam					VARCHAR(2000),
+CONSTRAINT PK_OutreachApp PRIMARY KEY (OutreachApp_ID),
+CONSTRAINT FK_OutreachApp_PersonID FOREIGN KEY (OutreachApp_PersonID) REFERENCES Person(Person_ID));
+
+CREATE TABLE AnimalCareApp (
+AnimalCareApp_ID						INTEGER NOT NULL IDENTITY,
+AnimalCareApp_PersonID					INTEGER NOT NULL,
+AnimalCareApp_HandsOnExperience			VARCHAR(2000),
+AnimalCareApp_HandleDeadAnimals			VARCHAR(2000),
+AnimalCareApp_OpinionLivePrey			VARCHAR(2000),
+AnimalCareApp_WorkOutside				VARCHAR(2000),
+AnimalCareApp_BelongToAnimalRightsGroup	VARCHAR(2000),
+AnimalCareApp_HopeToLearnAccomplish		VARCHAR(2000),
+AnimalCareApp_PassionateWildlifeIssue	VARCHAR(2000),
+AnimalCareApp_MoreAboutExperience		VARCHAR(2000),
+CONSTRAINT PK_AnimalCareApp PRIMARY KEY (AnimalCareApp_ID),
+CONSTRAINT FK_AnimalCareApp_PersonID FOREIGN KEY (AnimalCareApp_PersonID) REFERENCES Person(Person_ID));
+
+CREATE TABLE VetTeamApp (
+VetTeamApp_ID				INTEGER NOT NULL IDENTITY,
+VetTeamApp_PersonID			INTEGER NOT NULL,
+VetTeamApp_PreviousTraining	VARCHAR(2000),
+VetTeamApp_WorkEnvironment	VARCHAR(2000),
+VetTeamApp_Euthansia		VARCHAR(2000),
+VetTeamApp_Messy			VARCHAR(2000),
+CONSTRAINT PK_VetTeamApp PRIMARY KEY (VetTeamApp_ID),
+CONSTRAINT FK_VetTeamApp_PersonID FOREIGN KEY (VetTeamApp_PersonID) REFERENCES Person(Person_ID));
+
+CREATE TABLE TransporterApp (
+TransporterApp_ID	                    INTEGER NOT NULL IDENTITY,
+TransporterApp_PersonID			        INTEGER NOT NULL,
+TransporterApp_DistanceWillingToTravel	VARCHAR(2000),
+TransporterApp_CaptureAnimals	        VARCHAR(2000),
+TransporterApp_Acknowledgement			CHAR(1),
+CONSTRAINT PK_TransporterApp PRIMARY KEY (TransporterApp_ID),
+CONSTRAINT FK_TransporterApp_PersonID FOREIGN KEY (TransporterApp_PersonID) REFERENCES Person(Person_ID));
+
+CREATE TABLE ICE (
+ICE_ID	            INTEGER NOT NULL IDENTITY,
+ICE_PersonID	    INTEGER NOT NULL,
+ICE_Name	        VARCHAR(50),
+ICE_Phone	        VARCHAR(12),
+ICE_Email	        VARCHAR(254),
+ICE_Relationship	VARCHAR(20),
+CONSTRAINT PK_ICE PRIMARY KEY (ICE_ID),
+CONSTRAINT FK_ICE_PersonID FOREIGN KEY (ICE_PersonID) REFERENCES Person(Person_ID));
+
+CREATE TABLE Outreach (
+Outreach_ID	                                    INTEGER NOT NULL IDENTITY,
+Outreach_PersonID	                            INTEGER NOT NULL,
+Outreach_Department	                         	INTEGER NOT NULL,
+Outreach_TourShadowAdultsMixed                  INTEGER,
+Outreach_TourShadowHHChildren                   INTEGER,
+Outreach_IntroPortion                        	CHAR(1),
+Outreach_LeadAlone	                            CHAR(1),
+Outreach_OffSiteDisplays                     	CHAR(1),
+Outreach_FalconersKnot	                        CHAR(1),
+Outreach_RapterHandlingProcedureReviewedSigned	CHAR(1),
+Outreach_ReptileHandlingProcedureReviewedSigned	CHAR(1),
+Outreach_TravelProcedueReviewedSigned	        CHAR(1),
+Outreach_Notes	                                VARCHAR(2000),
+Outreach_AccumulatedHours                   	DECIMAL(10,2),
+CONSTRAINT PK_Outreach PRIMARY KEY (Outreach_ID),
+CONSTRAINT FK_Outreach_PersonID FOREIGN KEY (Outreach_PersonID) REFERENCES Person(Person_ID),
+CONSTRAINT FK_Outreach_Department FOREIGN KEY (Outreach_Department) REFERENCES Department(Department_ID));
+
+CREATE TABLE Animal (
+Animal_ID	        INTEGER NOT NULL IDENTITY,
+Animal_TypeOfAnimal	VARCHAR(30),
+CONSTRAINT PK_Animal PRIMARY KEY (Animal_ID));
+
+INSERT INTO Animal(Animal_TypeOfAnimal) VALUES ('Reptile');
+INSERT INTO Animal(Animal_TypeOfAnimal) VALUES ('Bird');
+
+CREATE TABLE Reptile (
+Reptile_ID	                    INTEGER NOT NULL IDENTITY,
+Reptile_OutreachID	            INTEGER NOT NULL,
+Reptile_AnimalID	            INTEGER NOT NULL,
+Reptile_Name	                VARCHAR(30),
+Reptile_HandledWithSupervision	CHAR(1),
+Reptile_RemovedFromEnclosure	CHAR(1),
+Reptile_CrateProcedure	        CHAR(1),
+Reptile_Notes	                VARCHAR(2000),
+CONSTRAINT PK_Reptile PRIMARY KEY (Reptile_ID),
+CONSTRAINT FK_Reptile_OutreachID FOREIGN KEY (Reptile_OutreachID) REFERENCES Outreach(Outreach_ID),
+CONSTRAINT FK_Reptile_AnimalID FOREIGN KEY (Reptile_AnimalID) REFERENCES Animal(Animal_ID));
+
+CREATE TABLE Bird (
+Bird_ID	                	INTEGER NOT NULL IDENTITY,
+Bird_OutreachID	        	INTEGER NOT NULL,
+Bird_AnimalID	        	INTEGER NOT NULL,
+Bird_Name	            	VARCHAR(30),
+Bird_Handle	            	CHAR(1),
+Bird_RemoveFromEnclosure	CHAR(1),
+Bird_CrateProcedure	    	CHAR(1),
+Bird_Notes	                VARCHAR(2000),
+CONSTRAINT PK_Bird PRIMARY KEY (Bird_ID),
+CONSTRAINT Bird_OutreachID FOREIGN KEY (Bird_OutreachID) REFERENCES Outreach(Outreach_ID),
+CONSTRAINT FK_Bird_AnimalID FOREIGN KEY (Bird_AnimalID) REFERENCES Animal(Animal_ID));
+
+CREATE TABLE Transporter (
+Transporter_ID                  	INTEGER NOT NULL IDENTITY,
+Transporter_PersonID	            INTEGER NOT NULL,
+Transporter_Department	            INTEGER NOT NULL,
+Transporter_CaptureRestraintClass	CHAR(1),
+Transporter_DistanceWillingToTravel	INTEGER,
+Transporter_SpeciesLimitations	    VARCHAR(2000),
+Transporter_Notes	                VARCHAR(2000),
+Transporter_AccumulatedMiles	    INTEGER,
+Transporter_AccumulatedHours	    DECIMAL(10,2),
+CONSTRAINT PK_Transporter PRIMARY KEY (Transporter_ID),
+CONSTRAINT FK_Transporter_PersonID FOREIGN KEY (Transporter_PersonID) REFERENCES Person(Person_ID),
+CONSTRAINT FK_Transporter_Department FOREIGN KEY (Transporter_Department) REFERENCES Department(Department_ID));
+
+CREATE TABLE LogTransport (
+LogTransport_ID	            INTEGER NOT NULL IDENTITY,
+LogTransport_TransportID	INTEGER NOT NULL,
+LogTransport_TypeOfAnimal	VARCHAR(100),
+LogTransport_Date	        DATE,
+LogTransport_Species	    VARCHAR(100),
+LogTransport_PickUpAddress  VARCHAR(300),
+LogTransport_Hours			INTEGER,
+LogTransport_Miles			INTEGER,
+LogTransport_TotalHours		DECIMAL(10,2),
+LogTransport_TotalMiles		DECIMAL(10,2),
+CONSTRAINT PK_LogTransport PRIMARY KEY (LogTransport_ID),
+CONSTRAINT FK_LogTransport_ID FOREIGN KEY (LogTransport_TransportID) REFERENCES Transporter(Transporter_ID));
+
+CREATE TABLE VetTeam (
+VetTeam_ID	                            INTEGER NOT NULL IDENTITY,
+VetTeam_PersonID	                    INTEGER NOT NULL,
+VetTeam_Department	                    INTEGER NOT NULL,
+VetTeam_HandlingSkillsSmallMammals  	CHAR(1),
+VetTeam_HandlingSkillsLargeMammals	    CHAR(1),
+VetTeam_HandlingSkillsRVS	            CHAR(1),
+VetTeam_HandlingSkillsEagles	        CHAR(1),
+VetTeam_HandlingSkillsSmallRaptors	    CHAR(1),
+VetTeam_HandlingSkillsLargeRaptors	    CHAR(1),
+VetTeam_HandlingSkillsReptiles	        CHAR(1),
+VetTeam_VeterniaryTrainingVet	        CHAR(1),
+VetTeam_VeterniaryTrainingTechnician	CHAR(1),
+VetTeam_VeterniaryTrainingVetStudent	CHAR(1),
+VetTeam_VeterniaryTrainingTechStudent	CHAR(1),
+VetTeam_VeterniaryTrainingVetAssistant	CHAR(1),
+VetTeam_PatientCareSkillsMedicating	    CHAR(1),
+VetTeam_PatientCareSkillsBandaging	    CHAR(1),
+VetTeam_PatientCareSkillsWoundCare	    CHAR(1),
+VetTeam_PatientCareSkillsDiagnostics	CHAR(1),
+VetTeam_PatientCareSkillsAnesthesia	    CHAR(1),
+VetTeam_SpecialInterestsHobbies	        VARCHAR(2000),
+VetTeam_Notes	                        VARCHAR(2000),
+VetTeam_AccumulatedHours	            DECIMAL(10,2),
+CONSTRAINT PK_VetTeam PRIMARY KEY (VetTeam_ID),
+CONSTRAINT FK_VetTeam_PersonID FOREIGN KEY (VetTeam_PersonID) REFERENCES Person(Person_ID),
+CONSTRAINT FK_VetTeam_Department FOREIGN KEY (VetTeam_Department) REFERENCES Department(Department_ID));
+
+CREATE TABLE AnimalCare (
+AnimalCare_ID	                    INTEGER NOT NULL IDENTITY,
+AnimalCare_PersonID	                INTEGER NOT NULL,
+AnimalCare_Department	            INTEGER NOT NULL,
+AnimalCare_Notes	                VARCHAR(2000),
+AnimalCare_AccumulatedHours	        DECIMAL(10,2),
+CONSTRAINT PK_AnimalCare PRIMARY KEY (AnimalCare_ID),
+CONSTRAINT FK_AnimalCare_PersonID FOREIGN KEY (AnimalCare_PersonID) REFERENCES Person(Person_ID),
+CONSTRAINT FK_AnimalCare_Department FOREIGN KEY (AnimalCare_Department) REFERENCES Department(Department_ID));
+
+CREATE TABLE AnimalCareTask (
+AnimalCareTask_ID	        INTEGER	NOT NULL IDENTITY,
+AnimalCareTask_NameOfTask   VARCHAR(30),
+CONSTRAINT PK_AnimalCareTask PRIMARY KEY (AnimalCareTask_ID));
+
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Reptile Room');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Reptile Room Soak Day');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Education Snake Feeding Day');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('ICU');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Expanded ICU');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Aviary');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Mammals');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('PU&E');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('PU&E Weigh Day');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Fawns');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Formula');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Meals');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('Raptor Feed');
+INSERT INTO AnimalCareTask(AnimalCareTask_NameOfTask) VALUES('ISO');
+
+CREATE TABLE TaskCheck (
+TaskCheck_ID	                INTEGER	NOT NULL IDENTITY,
+TaskCheck_AnimalCareID	        INTEGER	NOT NULL,
+TaskCheck_AnimalCareTaskID  	INTEGER	NOT NULL,
+TaskCheck_CheckOne	            CHAR(1),
+TaskCheck_CheckOneDescription	VARCHAR(50),
+TaskCheck_CheckTwo	            CHAR(1),
+TaskCheck_CheckTwoDescription	VARCHAR(50),
+TaskCheck_CheckThree	        CHAR(1),
+TaskCheck_CheckThreeDescription	VARCHAR(50),
+CONSTRAINT PK_TaskCheck PRIMARY KEY (TaskCheck_ID),
+CONSTRAINT FK_TaskCheck_AnimalCareID FOREIGN KEY (TaskCheck_AnimalCareID) REFERENCES AnimalCare(AnimalCare_ID),
+CONSTRAINT FK_TaskCheck_AnimalCareTaskID FOREIGN KEY (TaskCheck_AnimalCareTaskID) REFERENCES AnimalCareTask(AnimalCareTask_ID));
+
+CREATE TABLE OtherVolunteers (
+OtherVolunteers_ID	                        INTEGER NOT NULL IDENTITY,
+OtherVolunteers_PersonID	                INTEGER NOT NULL,
+OtherVolunteers_Department	                INTEGER NOT NULL,
+OtherVolunteers_CarpentrySkills	            CHAR(1),
+OtherVolunteers_FrontDeskTrained	        CHAR(1),
+OtherVolunteers_AdmininstrationAssistance	CHAR(1),
+OtherVolunteers_Notes	                    VARCHAR(2000),
+OtherVolunteers_AccumulatedHours	        DECIMAL(10,2),
+CONSTRAINT PK_OtherVolunteers PRIMARY KEY (OtherVolunteers_ID),
+CONSTRAINT FK_OtherVolunteers_PersonID FOREIGN KEY (OtherVolunteers_PersonID) REFERENCES Person(Person_ID),
+CONSTRAINT FK_OtherVolunteers_Department FOREIGN KEY (OtherVolunteers_Department) REFERENCES Department(Department_ID));
+
+CREATE TABLE LogHours (
+LogHours_ID		        INTEGER NOT NULL IDENTITY,
+LogHours_PersonID	    INTEGER NOT NULL,
+LogHours_BeginTime  	DATETIME,
+LogHours_EndTime	    DATETIME,
+LogHours_DayHours		DECIMAL(10,2),
+LogHours_TotalHours	    DECIMAL(10,2),
+LogHours_Forgot			CHAR(1),
+CONSTRAINT PK_LogHours PRIMARY KEY (LogHours_ID),
+CONSTRAINT FK_LogHours_PersonID FOREIGN KEY (LogHours_PersonID) REFERENCES Person(Person_ID));
+
+CREATE TABLE DayOfTheWeek (
+DayOfTheWeek_ID	            	INTEGER NOT NULL IDENTITY,
+DayOfTheWeek_Abbreviation      	VARCHAR(3) NOT NULL,
+DayOfTheWeek_Name	            VARCHAR(9),
+CONSTRAINT PK_DayOfTheWeek PRIMARY KEY (DayOfTheWeek_ID));
+
+INSERT INTO DayOfTheWeek(DayOfTheWeek_Abbreviation,DayOfTheWeek_Name) VALUES ('MON','Monday');
+INSERT INTO DayOfTheWeek(DayOfTheWeek_Abbreviation,DayOfTheWeek_Name) VALUES ('TUE','Tuesday');
+INSERT INTO DayOfTheWeek(DayOfTheWeek_Abbreviation,DayOfTheWeek_Name) VALUES ('WED','Wednesday');
+INSERT INTO DayOfTheWeek(DayOfTheWeek_Abbreviation,DayOfTheWeek_Name) VALUES ('THU','Thursday');
+INSERT INTO DayOfTheWeek(DayOfTheWeek_Abbreviation,DayOfTheWeek_Name) VALUES ('FRI','Friday');
+INSERT INTO DayOfTheWeek(DayOfTheWeek_Abbreviation,DayOfTheWeek_Name) VALUES ('SAT','Saturday');
+INSERT INTO DayOfTheWeek(DayOfTheWeek_Abbreviation,DayOfTheWeek_Name) VALUES ('SUN','Sunday');
+
+CREATE TABLE VolShift (
+VolShift_ID	            INTEGER NOT NULL IDENTITY,
+VolShift_PersonID	    INTEGER NOT NULL,
+VolShift_DayID	        INTEGER NOT NULL,
+VolShift_Department	    INTEGER,
+VolShift_Date	        DATETIME,
+VolShift_StartTime	    TIME,
+VolShift_EndTime	    TIME,
+VolShift_TotalHours	    DECIMAL(10,2),
+VolShift_Notes          VARCHAR(300),
+CONSTRAINT PK_VolShift PRIMARY KEY (VolShift_ID),
+CONSTRAINT FK_Shift_PersonID FOREIGN KEY (VolShift_PersonID) REFERENCES Person(Person_ID),
+CONSTRAINT FK_VolShift_DayID FOREIGN KEY (VolShift_DayID) REFERENCES DayOfTheWeek(DayOfTheWeek_ID),
+CONSTRAINT FK_VolShift_Department FOREIGN KEY (VolShift_Department) REFERENCES Department(Department_ID));
+
+CREATE TABLE AvailabilityPerson (
+AvailabilityPerson_ID	                INTEGER NOT NULL IDENTITY,
+AvailabilityPerson_PersonID	        	INTEGER NOT NULL,
+AvailabilityPerson_SeasonalYearRound	VARCHAR(10),
+AvailabilityPerson_Notes	            VARCHAR(2000),
+CONSTRAINT PK_AvailabilityPerson PRIMARY KEY (AvailabilityPerson_ID),
+CONSTRAINT FK_AvailabilityPerson_PersonID FOREIGN KEY (AvailabilityPerson_PersonID) REFERENCES Person(Person_ID));
+
+CREATE TABLE AvailabilityDay (
+AvailabilityDay_ID	            INTEGER NOT NULL IDENTITY,
+AvailabilityDay_Availability    INTEGER NOT NULL,
+AvailabilityDay_DayOfWeek	    INTEGER,
+CONSTRAINT PK_AvailabilityDay PRIMARY KEY (AvailabilityDay_ID),
+CONSTRAINT FK_AvailabilityDay_Availability FOREIGN KEY (AvailabilityDay_Availability) REFERENCES AvailabilityPerson(AvailabilityPerson_ID),
+CONSTRAINT FK_AvailabilityDay_DayOfWeek FOREIGN KEY (AvailabilityDay_DayOfWeek) REFERENCES DayOfTheWeek(DayOfTheWeek_ID));
+
+CREATE TABLE AppAvailabilityTime (
+AppAvailabilityTime_ID	            INTEGER NOT NULL,
+AppAvailabililyTime_AvailabilityDay INTEGER NOT NULL,
+AppAvailabilityTime_TimeOfDay	    INTEGER,
+CONSTRAINT PK_AppAvailabilityTime PRIMARY KEY (AppAvailabilityTime_ID),
+CONSTRAINT FK_AppAvailabililyTime_AvailabilityDay FOREIGN KEY (AppAvailabililyTime_AvailabilityDay) REFERENCES AvailabilityDay(AvailabilityDay_ID));
+
+CREATE TABLE VolAvailabilityTime (
+VolAvailabilityTime_ID	            INTEGER NOT NULL,
+VolAvailabililyTime_AvailabilityDay INTEGER NOT NULL,
+VolAvailabilityTime_TimeOfDay	    INTEGER,
+CONSTRAINT PK_VolAvailabilityTime PRIMARY KEY (VolAvailabilityTime_ID),
+CONSTRAINT FK_VolAvailabililyTime_AvailabilityDay FOREIGN KEY (VolAvailabililyTime_AvailabilityDay) REFERENCES AvailabilityDay(AvailabilityDay_ID));
+
+CREATE TABLE AvailabilityTransporter (
+AvailabilityTransporter_ID						INTEGER NOT NULL IDENTITY,
+AvailabilityTransporter_AvailabilityPersonID	INTEGER NOT NULL,
+AvailabilityTransporter_TimeOfWeek				VARCHAR(30),
+CONSTRAINT PK_AvailabilityTransporter PRIMARY KEY (AvailabilityTransporter_ID),
+CONSTRAINT FK_AvailabilityTransporter_AvailabilityPersonID FOREIGN KEY (AvailabilityTransporter_AvailabilityPersonID) REFERENCES AvailabilityPerson(AvailabilityPerson_ID));
+
+
+
+
+SET GLOBAL event_scheduler = ON;
+DELIMITER $$
+
+CREATE 
+	EVENT clock_out 
+	ON SCHEDULE EVERY 15 MINUTE
+	ON COMPLETION PRESERVE
+	DO BEGIN
+		SET @total = (SELECT COUNT(LogHours_ID) FROM LogHours);
+		SET @id = 1;
+		WHILE @id <= @total DO
+			SET @clockedOut = (SELECT LogHours_EndTime FROM LogHours WHERE LogHours_ID = @id);
+			IF @clockedOut IS NULL THEN
+				SET @difference = (SELECT TIMESTAMPDIFF(HOUR, LogHours_StartTime, NOW()) FROM LogHours WHERE LogHours_ID= @id);
+				IF  @difference>= 24 THEN
+					UPDATE LogHours SET LogHours_EndTime = NOW(), LogHours_Forgot = 'Y'
+					WHERE LogHours_ID = @id;
+				END IF;
+			END IF;
+			SET @id = @id + 1;
+		END WHILE;
+	END$$
+
+DELIMITER ;
+
+
+
+
+
+
+SET GLOBAL event_scheduler = ON;
+DELIMITER $$
+
+CREATE 
+	EVENT status
+	ON SCHEDULE EVERY 1 DAY
+	ON COMPLETION PRESERVE
+	DO BEGIN
+		SET @total = (SELECT MAX(Person_ID) FROM Person);
+		SET @id = 1;
+		WHILE @id <= @total DO
+			SET @lastDay = (SELECT Person_LastVolunteered FROM Person WHERE Person_ID = @id);
+				
+					SET @difference = (SELECT DATEDIFF(CURDATE(), @lastDay) FROM Person WHERE Person_ID= @id);
+					IF  @difference>= 365 THEN
+						UPDATE Peron SET Person_Status = "Inactive" 
+						WHERE Person_ID = @id;
+					ELSE
+						UPDATE Person SET Person_Status = "Active"
+						WHERE Person_ID = @id;
+					END IF;
+			SET @id = @id + 1;
+		END WHILE;
+	END$$
+
+DELIMITER ;
+
+
+
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+
+CREATE TABLE IF NOT EXISTS `events` (
+  `id` int(11) NOT NULL IDENTITY,
+  `title` varchar(255) NOT NULL,
+  `color` varchar(7) DEFAULT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime DEFAULT NULL,
+  `email` varchar(256),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 IDENTITY=15 ;
+
+
+CREATE TABLE IF NOT EXISTS `events2` (
+  `id` int(11) NOT NULL IDENTITY,
+  `title` varchar(255) NOT NULL,
+  `color` varchar(7) DEFAULT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime DEFAULT NULL,
+  `email` varchar(256),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 IDENTITY=15 ;
+
+
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+ALTER TABLE `events` IDENTITY = 5001;
+
+
+
+
+
+
+DELIMITER $$
+CREATE TRIGGER lastVolunteered
+AFTER INSERT ON LogHours FOR EACH ROW
+
+BEGIN
+
+DECLARE id INT;
+DECLARE date DATE;
+
+
+SET id = (SELECT NEW.LogHours_PersonID);
+SET date = (SELECT NEW.LogHours_BeginTime);
+
+UPDATE Person SET Person_LastVolunteered=date WHERE Person_ID = id;
+
+
+END $$
+
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE TRIGGER lastVolunteered2
+AFTER INSERT ON LogTransport FOR EACH ROW
+
+BEGIN
+
+DECLARE id INT;
+DECLARE personID INT;
+DECLARE date DATE;
+
+
+SET id = (SELECT NEW.LogTransport_TransportID);
+SET personID = (SELECT Transporter_PersonID FROM Transporter WHERE Transporter_ID = id);
+SET date = (SELECT NEW.LogTransport_Date);
+
+UPDATE Person SET Person_LastVolunteered=date WHERE Person_ID = personID;
+
+
+END $$
+
+DELIMITER ;
+
+
+INSERT INTO PERSON(Person_UserName, Person_PasswordHash, Person_UserType, Person_FirstName, Person_LastName, Person_Email) VALUES('rkrasner@wildlifecenter.org','$2a$08$1WTbkHa6r3OWNwewiqkMHOTfIinT0cUKmy5cld3L8xRZZGSNNsYvi','Team Lead','Raina','Krasner','rkrasner@wildlifecenter.org');
+INSERT INTO PERSON(Person_UserName, Person_PasswordHash, Person_UserType, Person_FirstName, Person_LastName, Person_Email) VALUES('lhorne@wildlifecenter.org','$2a$08$1WTbkHa6r3OWNwewiqkMHOTfIinT0cUKmy5cld3L8xRZZGSNNsYvi','Team Lead','Leigh-Ann','Horne','lhorne@wildlifecenter.org');
+INSERT INTO PERSON(Person_UserName, Person_PasswordHash, Person_UserType, Person_FirstName, Person_LastName, Person_Email) VALUES('lmcdaniel@wildlifecenter.org','$2a$08$1WTbkHa6r3OWNwewiqkMHOTfIinT0cUKmy5cld3L8xRZZGSNNsYvi','Team Lead','Linda','McDaniel','lmcdaniel@wildlifecenter.org');
+INSERT INTO PERSON(Person_UserName, Person_PasswordHash, Person_UserType, Person_FirstName, Person_LastName, Person_Email) VALUES('ebrooks@wildlifecenter.org','$2a$08$1WTbkHa6r3OWNwewiqkMHOTfIinT0cUKmy5cld3L8xRZZGSNNsYvi','Team Lead','Elizabeth','Brooks','ebrooks@wildlifecenter.org');
+INSERT INTO PERSON(Person_UserName, Person_PasswordHash, Person_UserType, Person_FirstName, Person_LastName, Person_Email) VALUES('wildlife@wildlifecenter.org','$2a$08$1WTbkHa6r3OWNwewiqkMHOTfIinT0cUKmy5cld3L8xRZZGSNNsYvi','Team Lead','Front Desk','Coordinators','wildlife@wildlifecenter.org');
+
+INSERT INTO Outreach(Outreach_PersonID, Outreach_Department) VALUES(1,1);
+INSERT INTO VetTeam(VetTeam_PersonID, VetTeam_Department) VALUES(2,3);
+INSERT INTO AnimalCare(AnimalCare_PersonID, AnimalCare_Department) VALUES(3,2);
+INSERT INTO OtherVolunteers (OtherVolunteers_PersonID, OtherVolunteers_Department) Values(4,5);
+INSERT INTO Transporter (Transporter_PersonID, Transporter_Department) Values(5,4);
+
