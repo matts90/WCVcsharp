@@ -160,13 +160,14 @@ public partial class index : System.Web.UI.Page
 
     protected void btnEmail_Click(object sender, EventArgs e) {
 
-
+        String userEmailAddress;
+        userEmailAddress = Text3.Text.ToString();
          var client = new SmtpClient("smtp.gmail.com", 587)
             {
                 Credentials = new System.Net.NetworkCredential("noreplywlcv484@gmail.com", "owlteam484"),
                 EnableSsl = true
             };
-            client.Send("noreplywlcv484@gmail.com", "curry.zacha@gmail.com", "test",
+            client.Send("noreplywlcv484@gmail.com", userEmailAddress, "test",
                 "Click this link: http://localhost:64760/forms.aspx");                      ///CHANGE IF NEEDED
             Console.WriteLine("Sent");
             Response.Redirect("clockin.aspx");

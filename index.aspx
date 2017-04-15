@@ -225,7 +225,6 @@
                                             class="form-control"
                                             value=""
                                             name="username"
-                                            
                                             placeholder="Email Address" 
                                             runat="server">
                                         </asp:TextBox>
@@ -233,13 +232,9 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-2 col-sm-offset-4">
-                                            <button
-                                                class="btn btn-default"
-                                                type="submit">
-                                                Apply
-                                            </button>
                                             <asp:Button
                                                 ID="btnEmail"
+                                                class="btn btn-default"
                                                 runat="server"
                                                 Text="Apply"
                                                 OnClick="btnEmail_Click" 
