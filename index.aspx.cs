@@ -4,27 +4,31 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+using System.Text;
 
-public partial class index : System.Web.UI.Page{
-    protected void Page_Load(object sender, EventArgs e)    {
-        
+public partial class index : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
     }
-    protected void btnClockIn_Click(object sender, EventArgs e)    {
+    protected void btnClockIn_Click(object sender, EventArgs e) {
         int personID;
         personID = -1;
         int departmentID = 1;
 
         try {
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
-            sc.ConnectionString = @"Server=.\LOCALHOST; Database=Wildlife;Trusted_Connection=Yes;";
+            sc.ConnectionString = @"Server=LOCALHOST; Database=Wildlife;Trusted_Connection=Yes;";
             sc.Open();
             System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
             insert.Connection = sc;
-            insert.CommandText = "SELECT Person_ID, Person_Email, Person_UserType FROM Person WHERE Person_Email = '" + username.Text.ToString() + "'" ;
+            insert.CommandText = "SELECT Person_ID, Person_Email, Person_UserType FROM Person WHERE Person_Email = '" + username.Text.ToString() + "'";
             insert.ExecuteNonQuery();
             System.Data.SqlClient.SqlDataReader reader = insert.ExecuteReader();
-            if(reader.HasRows){
-                while (reader.Read()){
+            if (reader.HasRows) {
+                while (reader.Read()) {
                     personID = reader.GetInt32(0);
                 }
                 reader.Close();
@@ -34,87 +38,56 @@ public partial class index : System.Web.UI.Page{
             }
             sc.Close();
         }
-        catch (System.Data.SqlClient.SqlException sqlException){
+        catch (System.Data.SqlClient.SqlException sqlException) {
             System.Diagnostics.Debug.WriteLine(sqlException);
         }
     }
 
-    protected void btnClockOut_Click(object sender, EventArgs e){
+    protected void btnClockOut_Click(object sender, EventArgs e) {
         int personID;
         personID = -1;
         int loginID;
         loginID = -1;
-        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
-        sc.ConnectionString = @"Server=LOCALHOST; Database=Wildlife;Trusted_Connection=Yes;";
-        sc.Open();
-        System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
-        insert.Connection = sc;
-        //SQL Statement to gather info
-        insert.CommandText = "SELECT Person_ID, Person_Email, Person_UserType FROM Person WHERE Person_Email = '" + username.Text.ToString() + "'";
-        personID = Convert.ToInt32(insert.ExecuteScalar());
-        insert.ExecuteNonQuery();
-        System.Data.SqlClient.SqlDataReader reader = insert.ExecuteReader();
-        if (reader.HasRows){
-            while (reader.Read()){
-                personID = reader.GetInt32(0);
-            }
-            reader.Close();
-            insert.CommandText = "SELECT MAX(LogHours_ID) FROM LogHours WHERE LogHours_PersonID = " + personID;
-            loginID = Convert.ToInt32(insert.ExecuteScalar());
+        try {
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
+            sc.ConnectionString = @"Server=LOCALHOST; Database=Wildlife;Trusted_Connection=Yes;";
+            sc.Open();
+            System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
+            insert.Connection = sc;
+            //SQL Statement to gather info
+            insert.CommandText = "SELECT Person_ID FROM Person WHERE Person_Email = '" + username.Text.ToString() + "'";
+            personID = Convert.ToInt32(insert.ExecuteScalar());
             insert.ExecuteNonQuery();
-            System.Data.SqlClient.SqlDataReader reader2 = insert.ExecuteReader();
-            if (reader.HasRows){
-                while (reader2.Read()){
-                    loginID = reader2.GetInt32(0);
+            System.Data.SqlClient.SqlDataReader reader = insert.ExecuteReader();
+            if (reader.HasRows) {
+                while (reader.Read()) {
+                    personID = reader.GetInt32(0);
                 }
-
-                /*  FIGURE OUT HOW TO UPDATE TRIGGER FOR SQL SERVER
-                            }
-            
-                            $result = $conn->query($sql);
-                            if ($result->num_rows > 0){
-                                // output data of each row
-                                while($row = $result->fetch_assoc()) {
-                                    $logID = $row['MAX(LogHours_ID)'];
-                                }
-                                $query = "UPDATE LogHours SET LogHours_EndTime = NOW() WHERE LogHours_ID =" . $logID;
-                                mysqli_query($conn, $query) or die(mysqli_error($conn));
-				
-                                header("Location: clockin.php");
-                                exit();
-                            }
-                        }
-                        else {
-                        // Not a volunteer, show an error
-                        $message = 'Error. If you are a transporter, please use the Transporter form.';
-                        echo "<SCRIPT>
-                        alert('$message');
-                        </SCRIPT>";
-                        }
+                reader.Close();
+                insert.CommandText = "SELECT MAX(LogHours_ID) FROM LogHours WHERE LogHours_PersonID = " + personID;
+                loginID = Convert.ToInt32(insert.ExecuteScalar());
+                insert.ExecuteNonQuery();
+                System.Data.SqlClient.SqlDataReader reader2 = insert.ExecuteReader();
+                if (reader2.HasRows) {
+                    while (reader2.Read()) {
+                        loginID = reader2.GetInt32(0);
                     }
-                    else {
-                     // passwords didn't match, show an error
-                        $message = 'Username incorrect. Please use your email address for your Username.';
-                        echo "<SCRIPT>
-                        alert('$message');
-                        </SCRIPT>";
-                    }
-                    $conn->close();
-                 }
-
-
-                */
-
-
-
+                    reader2.Close();
+                    insert.CommandText = "UPDATE LogHours " +
+                        "SET LogHours_EndTime = getdate() " +
+                        "WHERE LogHours_ID = " + loginID;
+                    insert.ExecuteNonQuery();
+                    Response.Redirect("clockin.aspx");
+                }
             }
+            sc.Close();
+        }
+        catch (System.Data.SqlClient.SqlException sqlException) {
+            System.Diagnostics.Debug.WriteLine(sqlException);
         }
     }
 
-    protected void btnTransporter_Click(object sender, EventArgs e)
-    {
-        // CANNOT FIGURE OUT WHAT IS WRONG HERE
-
+    protected void btnTransporter_Click(object sender, EventArgs e) {
         int personID;
         String user;
         int userType;
@@ -132,45 +105,74 @@ public partial class index : System.Web.UI.Page{
         String mileageReal = mileage.Text.ToString();
         int mileageRealer = Convert.ToInt32(mileageReal);
 
-        try{
+        try {
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
             sc.ConnectionString = @"Server=LOCALHOST; Database=Wildlife;Trusted_Connection=Yes;";
             sc.Open();
             System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
             insert.Connection = sc;
             //SQL Statement to gather hash
-            insert.CommandText = "SELECT Person_ID, Person_Email, Person_UserType FROM Person WHERE Person_Email = '" + usernameTransporter.Text.ToString() + "'";
+            insert.CommandText = "SELECT Person_ID FROM Person WHERE Person_Email = '" + usernameTransporter.Text.ToString() + "'";
             System.Console.WriteLine(usernameTransporter.Text.ToString());
             insert.ExecuteNonQuery();
             System.Diagnostics.Debug.WriteLine(insert.CommandText);
             System.Data.SqlClient.SqlDataReader reader = insert.ExecuteReader();
-            if (reader.HasRows){
-                while (reader.Read()){
+            if (reader.HasRows) {
+                while (reader.Read()) {
                     personID = reader.GetInt32(0);
-                    user = reader.GetString(1);
-                    userType = reader.GetInt32(2);
                 }
                 reader.Close();
                 insert.CommandText = "SELECT Transporter_ID FROM Transporter WHERE Transporter_PersonID = " + personID;
                 insert.ExecuteNonQuery();
                 System.Data.SqlClient.SqlDataReader reader2 = insert.ExecuteReader();
                 System.Diagnostics.Debug.WriteLine(personID);
-                if (reader2.HasRows){
-                    while (reader2.Read()){
+                if (reader2.HasRows) {
+                    while (reader2.Read()) {
                         transporterID = reader2.GetInt32(0);
                         System.Diagnostics.Debug.WriteLine(transporterID);
                     }
                     reader2.Close();
-                    insert.CommandText = "INSERT INTO LogTransport(LogTransport_TransportID, LogTransport_Date, LogTransport_PickUpAddress, LogTransport_Species, " +
-                    "LogTransport_Hours, LogTransport_Miles) VALUES (" + transporterID + ", getdate(), " +
-                    addressReal + "," + speciesReal + "," + hoursRealer + "," + mileageRealer + ")";
-                    insert.ExecuteNonQuery();
-                    Response.Redirect("transporter.aspx");
+                    insert.CommandText = 
+                        "INSERT INTO LogTransport(" +
+                        "LogTransport_TransportID, " +
+                        "LogTransport_Date, " +
+                        "LogTransport_PickUpAddress, " +
+                        "LogTransport_Species, " +
+                        "LogTransport_Hours, " +
+                        "LogTransport_Miles) VALUES (" +
+                        transporterID +
+                        ", getdate(), " +
+                        "'" + addressReal + "'," +
+                        "'" + speciesReal + "', " +
+                        hoursRealer + ", " +
+                        mileageRealer + ")";
+                        insert.ExecuteNonQuery();
+                        Response.Redirect("transporter.aspx");
                 }
             }
+            sc.Close();
         }
-        catch (System.Data.SqlClient.SqlException sqlException){
+        
+        catch (System.Data.SqlClient.SqlException sqlException) {
             System.Diagnostics.Debug.WriteLine(sqlException);
         }
     }
+
+    protected void btnEmail_Click(object sender, EventArgs e) {
+
+
+         var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new System.Net.NetworkCredential("noreplywlcv484@gmail.com", "owlteam484"),
+                EnableSsl = true
+            };
+            client.Send("noreplywlcv484@gmail.com", "curry.zacha@gmail.com", "test",
+                "Click this link: http://localhost:64760/forms.aspx");                      ///CHANGE IF NEEDED
+            Console.WriteLine("Sent");
+            Response.Redirect("clockin.aspx");
+        
+        
+    }
+         
+
 }
