@@ -99,6 +99,73 @@ public partial class outreach : System.Web.UI.Page
             publicSpeaking = TextBox4.Text.ToString();
             animalRightsGroup = TextBox5.Text.ToString();
             bringToTeam = TextBox6.Text.ToString();
+
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
+            sc.ConnectionString = @"Server=LOCALHOST;Database=Wildlife;Trusted_Connection=Yes;";
+            sc.Open();
+            System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
+            insert.Connection = sc;
+            insert.CommandText =
+                "INSERT INTO Person(" +
+                "Person_UserName, " +
+                "Person_PasswordHash, " +
+                "Person_UserType, " +
+                "Person_FirstName, " +
+                "Person_LastName, " +
+                "Person_Email, " +
+                "Person_PhonePrimary, " +
+                "Person_StreetAddress, " +
+                "Person_City, " +
+                "Person_State, " +
+                "Person_Zipcode, " +
+                "Person_DateOfBirth, " +
+                "Person_Status, " +
+                "Person_RabiesYN, " +
+                "Person_RabbiesVaccinationDate, " +
+                "Person_RehabilitatePermitCategory, " +
+                "Person_AllergiesYN, " +
+                "Person_Allergies, " +
+                "Person_WorkOutside, " +
+                "Person_OutsideLimitations " +
+                "Person_Lift40Lbs, " +
+                "Person_RehabilitateYN, " +
+                "Person_LastVolunteered) VALUES(" +
+                    email + "', " +
+                    outreachPassword + "', " +
+                    firstName + "', " +
+                    lastName + "', " +
+                    email + "', " +
+                    phoneNum + "', " +
+                    addressProvided + "', " +
+                    City + "', " +
+                    State + "', " +
+                    zipcode + "', " +
+                    DOB + "', " +
+                    "'Applicant', " +
+                    rabiesVacYN + "'," +
+                    rabiesVacDate + "', " +
+                    rehabPermitCat + "'," +
+                    allergiesLimitsYN + "'," +
+                    allergiesLimitsTB + "'," +
+                    outdoorWorkYN + "'," +
+                    outdoorWorkTB + "'," +
+                    lift40 + "'," +
+                    rehabPermitYN + "'," +
+                    "'getdate())";
+                   
+                    /*
+                    interest;
+                    passionateIssue;
+                    publicSpeaking;
+                    animalRightsGroup;
+                    bringToTeam;
+            */
+
+
+
+
+
+            insert.ExecuteNonQuery();
         }
         catch (System.Data.SqlClient.SqlException sqlException) {
         }
