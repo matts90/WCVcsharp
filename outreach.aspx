@@ -85,7 +85,7 @@
                                                         <asp:TextBox
                                                             runat="server"
                                                             ID="tbfirstName"
-                                                            required="required"
+                                                            
                                                             CSSclass="form-control"
                                                             type="text">
                                                         </asp:TextBox>
@@ -97,7 +97,7 @@
                                                         <asp:TextBox
                                                             runat="server"
                                                             ID="tblastName"
-                                                            required="required"
+                                                            
                                                             CSSclass="form-control">
                                                         </asp:TextBox>
 													</div>
@@ -108,7 +108,7 @@
                                                         <asp:TextBox
                                                             runat="server"
                                                             ID="password"
-                                                            required="required"
+                                                            
                                                             CSSclass="form-control">
                                                         </asp:TextBox>
 													</div>
@@ -119,7 +119,7 @@
 													 <asp:TextBox
                                                          runat="server"
                                                          ID="check"
-                                                         required="required"
+                                                         
                                                          CSSclass="form-control">
 													 </asp:TextBox>
 													</div>
@@ -130,7 +130,7 @@
 													  <asp:TextBox
                                                           runat="server"
                                                           ID="tbemail"
-                                                          required="required"
+                                                          
                                                           CSSclass="form-control">
 													  </asp:TextBox>
 													</div>
@@ -141,7 +141,7 @@
 													 <asp:TextBox
                                                          runat="server"
                                                          ID="phone"
-                                                         required="required"
+                                                         
                                                          CSSclass="form-control">
 													 </asp:TextBox>
 													</div>
@@ -152,7 +152,7 @@
 													 <asp:TextBox
                                                          runat="server"
                                                          ID="address"
-                                                         required="required"
+                                                         
                                                          CSSclass="form-control">
 													 </asp:TextBox>
 													</div>
@@ -163,7 +163,7 @@
 													  <asp:TextBox
                                                           runat="server"
                                                           ID="city" 
-                                                          required="required"
+                                                          
                                                           CSSclass="form-control">
 													  </asp:TextBox>
 													</div>
@@ -228,7 +228,7 @@
 													  <asp:TextBox
                                                           runat="server"
                                                           ID="zip"
-                                                          required="required"
+                                                          
                                                           CSSclass="form-control">
 													  </asp:TextBox>
 													</div>
@@ -698,7 +698,7 @@
                                                     runat="server" 
                                                     Text="Submit form" 
                                                     class="btn btn-default"
-                                                    OnClick="Button1_Click"/>
+                                                    OnClick="Button1_Click" />
                                                 <asp:Button 
                                                     ID="Button2"
                                                     runat="server"
