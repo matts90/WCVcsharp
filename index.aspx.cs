@@ -22,7 +22,7 @@ public partial class index : System.Web.UI.Page
         try {
 
         System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
-        sc.ConnectionString = @"Server=LOCALHOST; Database=Wildlife;Trusted_Connection=Yes;";
+        sc.ConnectionString = @"Server=TOSHIBAZCURR-PC\LOCALHOST; Database=Wildlife;Trusted_Connection=Yes;";
 
         sc.Open();
 
@@ -55,7 +55,7 @@ public partial class index : System.Web.UI.Page
             reader.Close();
 
 
-            insert.CommandText = "INSERT INTO LogHours(LogHours_PersonID, LogHours_Department, LogHours_BeginTime) VALUES(" + personID + ", " + departmentID + ", getdate())";
+            insert.CommandText = "INSERT INTO LogHours(LogHours_PersonID, LogHours_BeginTime) VALUES(" + personID + ", getdate())";
             insert.ExecuteNonQuery();
 
             Response.Redirect("clockin.aspx");

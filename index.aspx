@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -46,16 +46,40 @@
 
       </header>
     	<section class="panel-body">
-<form action="clockin.aspx" method="post" class="form-horizontal">
+<form
+    action="clockin.aspx"
+    method="post"
+    class="form-horizontal">
           <div class="form-group">
             <div class="col-sm-12">
-              <asp:TextBox runat="server" ID="username"  placeholder="Username" required="required" CSSclass="form-control"></asp:TextBox>
+              <asp:TextBox
+                  runat="server"
+                  ID="username" 
+                  placeholder="Username"
+                  required="required"
+                  CSSclass="form-control">
+
+              </asp:TextBox>
             </div>
           </div>
           <div class="form-group">
             <div class="form-inline">
-              <asp:Button ID="btnClockIn" runat="server" class="btn btn-default col-sm-3 col-sm-offset-3" type="submit" Text="Clock In" OnClick="btnClockIn_Click"></asp:Button>
-              <asp:Button ID="btnClockOut" runat="server" class="btn btn-default" type="submit" Text="Clock Out" OnClick="btnClockOut_Click"></asp:Button>
+              <asp:Button ID="btnClockIn"
+                  runat="server"
+                  class="btn btn-default col-sm-3 col-sm-offset-3"
+                  type="submit"
+                  Text="Clock In"
+                  OnClick="btnClockIn_Click">
+
+              </asp:Button>
+              <asp:Button ID="btnClockOut"
+                  runat="server"
+                  class="btn btn-default"
+                  type="submit"
+                  Text="Clock Out"
+                  OnClick="btnClockOut_Click">
+
+              </asp:Button>
             </div>
           </div>
 </form>
@@ -69,7 +93,9 @@
             </div>
             <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <form action="transporter.aspx" method="post" class="form-horizontal">
+                    <form action="transporter.aspx"
+                        method="post"
+                        class="form-horizontal">
     			<div class="form-group">
     			  <div class="col-sm-12">
                       <asp:TextBox runat="server" ID="usernameTransporter"  placeholder="Username" required="required" CSSclass="form-control"></asp:TextBox>
