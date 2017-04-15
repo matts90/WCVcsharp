@@ -28,7 +28,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <header>
+        
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container">
                     <div class="navbar-header">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </nav>
-        </header>
+        
         
         
         <section>
@@ -74,7 +74,7 @@
                                 </header>
                                 <section class="panel-body container-fluid">
                                     <div class="leading">
-										<form id="form" method="post" enctype = "multipart/form-data"  class="form-horizontal panel panel-default" >
+										<form id="form" runat="server" method="post" enctype = "multipart/form-data"  class="form-horizontal panel panel-default" >
 											<header class="panel-heading"><h2 class="panel-title">Basic Information</h2></header>
 			
 											<fieldset class="panel-body">
@@ -525,8 +525,8 @@
 												</div>
 											</fieldset>
 											<footer class="panel-footer">
-												<input class="btn btn-default" type="submit" name = 'upload' type="submit" id = 'upload' value="Submit form"/>
-												<button class="btn btn-default" type="reset">Reset</button>
+												
+												<asp:Button ID="submit" runat="server" class="btn btn-default" type="submit" Text="Upload" Onclick="btnSubmit"></asp:Button>
 											</footer>
                                         </form>
 									</div>
