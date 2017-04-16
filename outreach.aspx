@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="outreach.aspx.cs" Inherits="outreach" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="outreach.aspx.cs" Inherits="outreach" MaintainScrollPositionOnPostBack = "true"%>
 
 
 <html>
@@ -6,21 +6,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
-<title>Wildlife Center of Virginia - Outreach Application</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
 	<title>Outreach Application</title>
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
 
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous">
+	</script>
+
+    <!-- Date Picker -->
+    <script src="../../Scripts/jquery-1.3.2.min.js" 
+        language="javascript" 
+        type="text/javascript"></script>
+    <script src="../../Scripts/jquery-ui-1.7.1.custom.min.js" 
+        type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#DOBDate").datepicker();
+        });
+     </script>
 
 
 	<link rel="stylesheet" media="screen" href="css/style.css" />
@@ -28,7 +42,6 @@
 </head>
 <body>
     <div id="wrapper">
-
 
         <header>
             <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -40,7 +53,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href=""><img src="../images/logo_short.png" alt="Wildlife Small Logo"></a>
+                        <a class="navbar-brand"><img src="../images/logo_short.png" alt="Wildlife Small Logo"></a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul id="main-nav" class="nav navbar-nav">
@@ -80,7 +93,7 @@
 											</header>
 											<fieldset class="panel-body">
 												<div class="form-group">
-													<label class="col-sm-2">First Name *</label>
+                                                    <label class="col-sm-2">First Name</label>
 													<div class="col-sm-10">
                                                         <asp:TextBox
                                                             runat="server"
@@ -92,7 +105,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-2">Last Name *</label>
+													<label class="col-sm-2">Last Name</label>
 													<div class="col-sm-10">
                                                         <asp:TextBox
                                                             runat="server"
@@ -103,7 +116,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-2">Create Password *</label>
+													<label class="col-sm-2">Create Password </label>
 													<div class="col-sm-10">
                                                         <asp:TextBox
                                                             runat="server"
@@ -114,7 +127,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-2">Confirm Password *</label>
+													<label class="col-sm-2">Confirm Password</label>
 													<div class="col-sm-10">
 													 <asp:TextBox
                                                          runat="server"
@@ -125,7 +138,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-2">Email *</label>
+													<label class="col-sm-2">Email</label>
 													<div class="col-sm-10">
 													  <asp:TextBox
                                                           runat="server"
@@ -136,7 +149,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-2">Phone *</label>
+													<label class="col-sm-2">Phone</label>
 													<div class="col-sm-10">
 													 <asp:TextBox
                                                          runat="server"
@@ -147,7 +160,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-2">Address *</label>
+													<label class="col-sm-2">Address</label>
 													<div class="col-sm-10">
 													 <asp:TextBox
                                                          runat="server"
@@ -158,7 +171,7 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-sm-2">City *</label>
+													<label class="col-sm-2">City</label>
 													<div class="col-sm-2">
 													  <asp:TextBox
                                                           runat="server"
@@ -167,7 +180,7 @@
                                                           CSSclass="form-control">
 													  </asp:TextBox>
 													</div>
-													<label class="col-sm-1">State *</label>
+													<label class="col-sm-1">State</label>
 													<div class="col-sm-3">
 
 													    <select id="homestate" runat="server">
@@ -223,7 +236,7 @@
 															<option value="Wyoming">Wyoming</option>
                                                         </select> 
 													</div>
-													<label class="col-sm-2">Zip Code *</label>
+													<label class="col-sm-2">Zip Code</label>
 													<div class="col-sm-2">
 													  <asp:TextBox
                                                           runat="server"
@@ -235,6 +248,17 @@
 												</div>
 												<div class="form-group">
 													<label class="col-sm-2">Date of Birth *</label>
+                                                    <div>
+                                                        <asp:TextBox 
+                                                            runat="server"
+                                                            type="text"
+                                                            value="9/23/2009"
+                                                            style="width: 100px;"
+                                                            name="Date"
+                                                            id="DOBDate"
+                                                            class="hasDatepicker"/>
+                                                        
+                                                    </div>
 													<div class="col-sm-10">
 														<select id="DOBMonth" runat="server">
 															<option value="00">- Month -</option> 				
@@ -340,7 +364,7 @@
 															<option value="1949">1949</option>
 															<option value="1948">1948</option>
 															<option value="1947">1947</option>
-														</select>								<!-- Wanna have a date picker instead? or have it populate the drop downs? -->
+														</select>
 													</div>								
 												</div>
 												<div class="form-group">
@@ -352,7 +376,8 @@
                                                                 runat="server"
                                                                 GroupName="work"
                                                                 value="All Year"
-                                                                text="All Year" />
+                                                                text="All Year" 
+                                                                Checked="true"/>
                                                             <br />
                                                             <asp:RadioButton
                                                                 ID="RadioButton12"
@@ -360,60 +385,67 @@
                                                                 GroupName="work"
                                                                 value="Seasonal"
                                                                 text="Seasonal"  />
-														    </div>
-													    </div>
-												    </div>
-												    <div class="form-group">
-													    <label class="col-sm-2">Availability *</label>
-													    <table style="width:10%">
-														    <tr>
-															    <td>Sundays</td>
-                                                                <td><asp:CheckBox
-                                                                    ID="CheckBox1"
-                                                                    runat="server"
-                                                                    value="Sunday"/></td>
-														        </tr>
-														        <tr>
-															        <td>Mondays</td>
-                                                                    <td><asp:CheckBox
-                                                                        ID="CheckBox2"
-                                                                        runat="server" 
-                                                                        value="Monday"/></td>
-															        </tr>
-														        <tr>
-															        <td>Tuesdays</td>
-                                                                    <td><asp:CheckBox
-                                                                        ID="CheckBox3" 
-                                                                        runat="server" 
-                                                                        value="Tuesday"/></td>
-															        </tr>
-														        <tr>
-															<td>Wednesdays</td>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2">Availability *</label>
+													<table style="width:10%">
+														<tr>
+															<td>Sundays</td>
+                                                            <td><asp:CheckBox
+                                                                ID="CheckBox1"
+                                                                runat="server"
+                                                                value="Sunday"/>
+                                                            </td>
+														</tr>
+														<tr>
+															<td>Mondays</td>
+                                                            <td><asp:CheckBox
+                                                                ID="CheckBox2"
+                                                                runat="server" 
+                                                                value="Monday"/>
+                                                            </td>
+															</tr>
+														<tr>
+															<td>Tuesdays</td>
+                                                            <td><asp:CheckBox
+                                                                ID="CheckBox3" 
+                                                                runat="server" 
+                                                                value="Tuesday"/>
+                                                            </td>
+															</tr>
+														<tr>
+														    <td>Wednesdays</td>
                                                             <td><asp:CheckBox 
                                                                 ID="CheckBox4" 
                                                                 runat="server" 
-                                                                value="Wednesday"/></td>
-															</tr>
-														<tr>
-															<td>Thursdays</td>
+                                                                value="Wednesday"/>
+                                                            </td>
+														</tr>
+													    <tr>
+														    <td>Thursdays</td>
                                                             <td><asp:CheckBox 
                                                                 ID="CheckBox5" 
                                                                 runat="server" 
-                                                                value="Thursday"/></td>
-															</tr>
-														<tr>
-															<td>Fridays</td>
+                                                                value="Thursday"/>
+                                                            </td>
+														    </tr>
+													    <tr>
+														    <td>Fridays</td>
                                                             <td><asp:CheckBox 
                                                                 ID="CheckBox6" 
                                                                 runat="server"
-                                                                value="Friday"/></td>
-															</tr>
+                                                                value="Friday"/>
+                                                            </td>
+														    </tr>
 														<tr>
 															<td>Saturdays</td>
                                                             <td><asp:CheckBox 
                                                                 ID="CheckBox7" 
                                                                 runat="server" 
-                                                                value="Saturday"/></td>
+                                                                value="Saturday"/>
+                                                            </td>
 															</tr>
 													</table>
 												</div>
@@ -428,25 +460,29 @@
                                                                 ID="RadioButton1" 
                                                                 runat="server" 
                                                                 GroupName="permit" 
-                                                                text="Yes" OnCheckedChanged="RadioButton1_CheckedChanged" />
+                                                                text="Yes"
+                                                                Checked="true"
+                                                                OnCheckedChanged="RadioButton1_CheckedChanged"
+                                                                AutoPostBAck="true" />
                                                             <br />
                                                             <asp:RadioButton 
                                                                 ID="RadioButton2" 
                                                                 runat="server" 
                                                                 GroupName="permit" 
-                                                                text="No"  />
+                                                                text="No"
+                                                                OnCheckedChanged="RadioButton2_CheckedChanged"
+                                                                AutoPostBAck="true"  />
 														</div>
 													</div>
-													
 												</div>
-												<div class="form-group">
+												<div id="visibleRahab" class="form-group" runat="server">
 													<label class="col-sm-3">If so, what category? Please upload a copy of your permit.</label>
 														<div>
 															<select id="permitCategory" runat="server">
-																<option name="permitCategory" value="">--</option>
-																<option name="permitCategory" value="1">1</option>
-																<option name="permitCategory" value="2">2</option>
-																<option name="permitCategory" value="4">4</option>
+																<option value="">--</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="4">4</option>
 															</select>
 														</div>
 														<div class="fileinput fileinput-new" data-provides="fileinput">
@@ -468,8 +504,7 @@
                                                                 text="Yes"
                                                                 Checked="true"
                                                                 OnCheckedChanged="RadioButton3_CheckedChanged"
-                                                                AutoPostBAck="true"
-                                                                />
+                                                                AutoPostBAck="true"/>
                                                             <br />
                                                             <asp:RadioButton 
                                                                 ID="RadioButton4" 
@@ -484,96 +519,96 @@
 												</div>
 												<div class="form-group" id="visibleRabiesDoc" runat="server">
 													<label class="col-sm-3">If so, how recently? Please provide proof of vaccination. Upload an attachment.</label>
-														<div>
-															<select id="VacMonth" runat="server">
-																<option value="">- Month -</option>
-																<option value="01">January</option>
-																<option value="02">February</option>
-																<option value="03">March</option>
-																<option value="04">April</option>
-																<option value="05">May</option>
-																<option value="06">June</option>
-																<option value="07">July</option>
-																<option value="08">August</option>
-																<option value="09">September</option>
-																<option value="10">October</option>
-																<option value="11">November</option>
-																<option value="12">December</option>
-															</select>
-															<select id="VacDay" runat="server">
-																<option value="">- Day -</option>
-																<option value="01">1</option>
-																<option value="02">2</option>
-																<option value="03">3</option>
-																<option value="04">4</option>
-																<option value="05">5</option>
-																<option value="06">6</option>
-																<option value="07">7</option>
-																<option value="08">8</option>
-																<option value="09">9</option>
-																<option value="10">10</option>
-																<option value="11">11</option>
-																<option value="12">12</option>
-																<option value="13">13</option>
-																<option value="14">14</option>
-																<option value="15">15</option>
-																<option value="16">16</option>
-																<option value="17">17</option>
-																<option value="18">18</option>
-																<option value="19">19</option>
-																<option value="20">20</option>
-																<option value="21">21</option>
-																<option value="22">22</option>
-																<option value="23">23</option>
-																<option value="24">24</option>
-																<option value="25">25</option>
-																<option value="26">26</option>
-																<option value="27">27</option>
-																<option value="28">28</option>
-																<option value="29">29</option>
-																<option value="30">30</option>
-																<option value="31">31</option>
-															</select>
-															<select id="VacYear" runat="server">
-																<option value=""> - Year - </option>
-																<option value="2017">2017</option>
-																<option value="2016">2016</option>
-																<option value="2015">2015</option>
-																<option value="2014">2014</option>
-																<option value="2013">2013</option>
-																<option value="2012">2012</option>
-																<option value="2011">2011</option>
-																<option value="2010">2010</option>
-																<option value="2009">2009</option>
-																<option value="2008">2008</option>
-																<option value="2007">2007</option>
-																<option value="2006">2006</option>
-																<option value="2005">2005</option>
-																<option value="2004">2004</option>
-																<option value="2003">2003</option>
-																<option value="2002">2002</option>
-																<option value="2001">2001</option>
-																<option value="2000">2000</option>
-																<option value="1999">1999</option>
-																<option value="1998">1998</option>
-																<option value="1997">1997</option>
-																<option value="1996">1996</option>
-																<option value="1995">1995</option>
-																<option value="1994">1994</option>
-																<option value="1993">1993</option>
-																<option value="1992">1992</option>
-																<option value="1991">1991</option>
-															</select>								<!-- Wanna have a date picker instead? or have it populate the drop downs? -->
-														</div>
-														<div class="fileinput fileinput-new" data-provides="fileinput">
-															<span class="btn btn-default btn-file">
-																<input
-                                                                    name="rabbiesDocumentation" 
-                                                                    id = "rabbiesDocumentation" 
-                                                                    type="file" multiple /></span>
-															<span class="fileinput-filename"></span>
-															<span class="fileinput-new"></span>
-														</div>
+													<div>
+														<select id="VacMonth" runat="server">
+															<option value="">- Month -</option>
+															<option value="01">January</option>
+															<option value="02">February</option>
+															<option value="03">March</option>
+															<option value="04">April</option>
+															<option value="05">May</option>
+															<option value="06">June</option>
+															<option value="07">July</option>
+															<option value="08">August</option>
+															<option value="09">September</option>
+															<option value="10">October</option>
+															<option value="11">November</option>
+															<option value="12">December</option>
+														</select>
+														<select id="VacDay" runat="server">
+															<option value="">- Day -</option>
+															<option value="01">1</option>
+															<option value="02">2</option>
+															<option value="03">3</option>
+															<option value="04">4</option>
+															<option value="05">5</option>
+															<option value="06">6</option>
+															<option value="07">7</option>
+															<option value="08">8</option>
+															<option value="09">9</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+															<option value="13">13</option>
+															<option value="14">14</option>
+															<option value="15">15</option>
+															<option value="16">16</option>
+															<option value="17">17</option>
+															<option value="18">18</option>
+															<option value="19">19</option>
+															<option value="20">20</option>
+															<option value="21">21</option>
+															<option value="22">22</option>
+															<option value="23">23</option>
+															<option value="24">24</option>
+															<option value="25">25</option>
+															<option value="26">26</option>
+															<option value="27">27</option>
+															<option value="28">28</option>
+															<option value="29">29</option>
+															<option value="30">30</option>
+															<option value="31">31</option>
+														</select>
+														<select id="VacYear" runat="server">
+															<option value=""> - Year - </option>
+															<option value="2017">2017</option>
+															<option value="2016">2016</option>
+															<option value="2015">2015</option>
+															<option value="2014">2014</option>
+															<option value="2013">2013</option>
+															<option value="2012">2012</option>
+															<option value="2011">2011</option>
+															<option value="2010">2010</option>
+															<option value="2009">2009</option>
+															<option value="2008">2008</option>
+															<option value="2007">2007</option>
+															<option value="2006">2006</option>
+															<option value="2005">2005</option>
+															<option value="2004">2004</option>
+															<option value="2003">2003</option>
+															<option value="2002">2002</option>
+															<option value="2001">2001</option>
+															<option value="2000">2000</option>
+															<option value="1999">1999</option>
+															<option value="1998">1998</option>
+															<option value="1997">1997</option>
+															<option value="1996">1996</option>
+															<option value="1995">1995</option>
+															<option value="1994">1994</option>
+															<option value="1993">1993</option>
+															<option value="1992">1992</option>
+															<option value="1991">1991</option>
+														</select>
+													</div>
+													<div class="fileinput fileinput-new" data-provides="fileinput">
+														<span class="btn btn-default btn-file">
+															<input
+                                                                name="rabbiesDocumentation" 
+                                                                id = "rabbiesDocumentation" 
+                                                                type="file" multiple /></span>
+														<span class="fileinput-filename"></span>
+														<span class="fileinput-new"></span>
+													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3">Are you able to lift 40 lbs?</label>
@@ -584,7 +619,8 @@
                                                                 runat="server" 
                                                                 GroupName="fortyLBS" 
                                                                 value="Yes" 
-                                                                text="Yes" />
+                                                                text="Yes"
+                                                                Checked="true"/>
                                                             <br />
                                                             <asp:RadioButton 
                                                                 ID="RadioButton6" 
@@ -593,7 +629,7 @@
                                                                 value="No" 
                                                                 text="No"  />
                                                             <br />
-                                                        <br />
+                                                            <br />
 														</div>
 													</div>
 												</div>
@@ -609,14 +645,14 @@
                                                             Checked="true"
                                                             AutoPostBack="true"
                                                             OnCheckedChanged="RadioButton7_CheckedChanged"/>
-                                                            <br />
+                                                        <br />
                                                         <asp:RadioButton 
                                                             ID="RadioButton8" 
                                                             runat="server" 
                                                             GroupName="limitationsASN" 
                                                             value="No" 
                                                             text="No" 
-                                                             AutoPostBack="true"
+                                                            AutoPostBack="true"
                                                             OnCheckedChanged="RadioButton8_CheckedChanged"/>
                                                         <asp:TextBox
                                                             ID="TextBox1"
@@ -701,7 +737,7 @@
                                                             runat="server"
                                                             class="form-control"
                                                             TextMode="MultiLine"
-                                                             required="required">
+                                                            required="required">
                                                         </asp:TextBox>
                                                         <br />
 													</div>                  
@@ -712,19 +748,21 @@
                                                             runat="server"
                                                             class="form-control"
                                                             TextMode="MultiLine"
-                                                             required="required">
+                                                            required="required">
                                                         </asp:TextBox>
+                                                        <br />
 													</div>
-													<div class="col-sm-12 col-sm-offset-3">Please upload a current resume.</div>
-													<div class="fileinput fileinput-new" data-provides="fileinput">
-															<span class="btn btn-default btn-file">
-																<input 
-                                                                    name="userFile" 
-                                                                    id = "userFile" 
-                                                                    type="file" 
-                                                                    multiple /></span>
-															<span class="fileinput-filename"></span>
-															<span class="fileinput-new"></span>
+													<label class="col-sm-3">Please upload a current resume.</label>
+													<div class="col-sm-9 fileinput fileinput-new" data-provides="fileinput">
+														<span class="btn btn-default btn-file">
+															<input 
+                                                                name="userFile" 
+                                                                id = "userFile" 
+                                                                type="file" 
+                                                                multiple />
+														</span>
+														<span class="fileinput-filename"></span>
+														<span class="fileinput-new"></span>
 														</div>
 												</div>
 											</fieldset>
@@ -733,7 +771,7 @@
                                                     ID="Button1" 
                                                     runat="server" 
                                                     Text="Submit form" 
-                                                    class="btn btn-default"
+                                                    class="btn btn-primary"
                                                     OnClick="Button1_Click" />
                                                 <asp:Button 
                                                     ID="Button2"
@@ -760,7 +798,7 @@
     <footer>
         <div id="footer-inner" class="container">
             <div>
-                <span class="pull-right footer" > &copy; 2017. All rights reserved. Owl Team
+                <span class="pull-right footer" > &copy; 2017. All rights reserved. Owl Team </span>
             </div>
         </div>
     </footer>

@@ -5,12 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class outreach : System.Web.UI.Page
-{
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        RadioButton1.Enabled = true;
-        RadioButton3.Enabled = true;
+public partial class outreach : System.Web.UI.Page {
+    protected void Page_Load(object sender, EventArgs e) {
+
     }
 
     String firstName;
@@ -38,17 +35,51 @@ public partial class outreach : System.Web.UI.Page
     String publicSpeaking;
     String animalRightsGroup;
     String bringToTeam;
-    
-  
+
+
 
     //rehab permit
     //rabies vacc
     //resume
+    /*
+    protected void DOBMonthChange(object sender, EventArgs e) {
+        if (DOBMonth.Value.ToString() == "00") {
 
-        
+            
+        }
+        if (DOBMonth.Value.ToString() == "02") {
 
+        }
+        if (DOBMonth.Value.ToString() == "01" ||
+            DOBMonth.Value.ToString() == "03" ||
+            DOBMonth.Value.ToString() == "05" ||
+            DOBMonth.Value.ToString() == "07" ||
+            DOBMonth.Value.ToString() == "08" ||
+            DOBMonth.Value.ToString() == "10" ||
+            DOBMonth.Value.ToString() == "12") {
+
+        }
+    }
+    */
+    
     protected void Button1_Click(object sender, EventArgs e) {
         String personID = "0";
+        if (DOBMonth.Value.ToString() == "00") {
+
+            
+        }
+        if (DOBMonth.Value.ToString() == "02") {
+
+        }
+        if (DOBMonth.Value.ToString() == "01" ||
+            DOBMonth.Value.ToString() == "03" ||
+            DOBMonth.Value.ToString() == "05" ||
+            DOBMonth.Value.ToString() == "07" ||
+            DOBMonth.Value.ToString() == "08" ||
+            DOBMonth.Value.ToString() == "10" ||
+            DOBMonth.Value.ToString() == "12") {
+
+        }
 
         try {
             firstName = tbfirstName.Text.ToString();
@@ -60,41 +91,55 @@ public partial class outreach : System.Web.UI.Page
             City = city.Text.ToString();
             State = homestate.Value.ToString();
             zipcode = zip.Text.ToString();
+            
             DOB = DOBMonth.Value.ToString() + "/" +
                 DOBDay.Value.ToString() + "/" +
                 DOBYear.Value.ToString();
             dayOfWeek = "a";
             bool rpIsChecked = RadioButton1.Checked;
-            if (rpIsChecked)
+            if (rpIsChecked) {
                 rehabPermitYN = RadioButton1.Text.ToString();
-            else
+                rehabPermitCat = permitCategory.Value.ToString();
+            }
+            else {
                 rehabPermitYN = RadioButton2.Text.ToString();
-            rehabPermitCat = permitCategory.Value.ToString();
+                rehabPermitCat = "'NULL'";
+            }
             bool rvIsChecked = RadioButton3.Checked;
-            if (rvIsChecked)
+            if (rvIsChecked){
                 rabiesVacYN = RadioButton3.Text.ToString();
-            else
-                rabiesVacYN = RadioButton4.Text.ToString();
-            rabiesVacDate = VacMonth.Value.ToString() + "/" +
+                rabiesVacDate = VacMonth.Value.ToString() + "/" +
                 VacDay.Value.ToString() + "/" +
                 VacYear.Value.ToString();
+            }
+            else {
+                rabiesVacYN = RadioButton4.Text.ToString();
+                rabiesVacDate = "'NULL'";
+            }
             bool lift40IsChecked = RadioButton5.Checked;
             if (lift40IsChecked)
                 lift40 = RadioButton5.Text.ToString();
             else
                 lift40 = RadioButton6.Text.ToString();
             bool allergIsChecked = RadioButton7.Checked;
-            if (allergIsChecked)
+            if (allergIsChecked){
                 allergiesLimitsYN = RadioButton7.Text.ToString();
-            else
+                allergiesLimitsTB = TextBox1.Text.ToString();
+            }
+            else {
                 allergiesLimitsYN = RadioButton7.Text.ToString();
-            allergiesLimitsTB = TextBox1.Text.ToString();
+                allergiesLimitsTB = "'NULL'";
+            }
             bool woIsChecked = RadioButton9.Checked;
-            if (woIsChecked)
+            if (woIsChecked) {
                 outdoorWorkYN = RadioButton9.Text.ToString();
-            else
+                outdoorWorkTB = TextBox2.Text.ToString();
+            }
+            else {
                 outdoorWorkYN = RadioButton10.Text.ToString();
-            outdoorWorkTB = TextBox2.Text.ToString();
+                outdoorWorkTB = "'NULL'";
+            }
+            
             interest = TextBox7.Text.ToString();
             passionateIssue = TextBox3.Text.ToString();
             publicSpeaking = TextBox4.Text.ToString();
@@ -184,7 +229,7 @@ public partial class outreach : System.Web.UI.Page
         }
         catch (System.Data.SqlClient.SqlException sqlException) {
         }
-    
+
     }
 
     protected void Button2_Click(object sender, EventArgs e) {
@@ -192,8 +237,10 @@ public partial class outreach : System.Web.UI.Page
     }
 
     protected void RadioButton1_CheckedChanged(object sender, EventArgs e) {
-        permitCategory.SelectedIndex = 0;
-
+        visibleRahab.Visible = true;
+    }
+    protected void RadioButton2_CheckedChanged(object sender, EventArgs e) {
+        visibleRahab.Visible = false;
     }
     protected void RadioButton3_CheckedChanged(object sender, EventArgs e) {
         visibleRabiesDoc.Visible = true;
