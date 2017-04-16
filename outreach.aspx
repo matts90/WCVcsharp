@@ -85,7 +85,7 @@
                                                         <asp:TextBox
                                                             runat="server"
                                                             ID="tbfirstName"
-                                                            
+                                                            required="required"
                                                             CSSclass="form-control"
                                                             type="text">
                                                         </asp:TextBox>
@@ -97,7 +97,7 @@
                                                         <asp:TextBox
                                                             runat="server"
                                                             ID="tblastName"
-                                                            
+                                                            required="required"
                                                             CSSclass="form-control">
                                                         </asp:TextBox>
 													</div>
@@ -108,7 +108,7 @@
                                                         <asp:TextBox
                                                             runat="server"
                                                             ID="password"
-                                                            
+                                                            required="required"
                                                             CSSclass="form-control">
                                                         </asp:TextBox>
 													</div>
@@ -119,7 +119,7 @@
 													 <asp:TextBox
                                                          runat="server"
                                                          ID="check"
-                                                         
+                                                         required="required"
                                                          CSSclass="form-control">
 													 </asp:TextBox>
 													</div>
@@ -130,7 +130,7 @@
 													  <asp:TextBox
                                                           runat="server"
                                                           ID="tbemail"
-                                                          
+                                                          required="required"
                                                           CSSclass="form-control">
 													  </asp:TextBox>
 													</div>
@@ -141,7 +141,7 @@
 													 <asp:TextBox
                                                          runat="server"
                                                          ID="phone"
-                                                         
+                                                         required="required"
                                                          CSSclass="form-control">
 													 </asp:TextBox>
 													</div>
@@ -152,7 +152,7 @@
 													 <asp:TextBox
                                                          runat="server"
                                                          ID="address"
-                                                         
+                                                         required="required"
                                                          CSSclass="form-control">
 													 </asp:TextBox>
 													</div>
@@ -163,7 +163,7 @@
 													  <asp:TextBox
                                                           runat="server"
                                                           ID="city" 
-                                                          
+                                                          required="required"
                                                           CSSclass="form-control">
 													  </asp:TextBox>
 													</div>
@@ -228,7 +228,7 @@
 													  <asp:TextBox
                                                           runat="server"
                                                           ID="zip"
-                                                          
+                                                          required="required"
                                                           CSSclass="form-control">
 													  </asp:TextBox>
 													</div>
@@ -353,41 +353,41 @@
                                                                 GroupName="work"
                                                                 value="All Year"
                                                                 text="All Year" />
-                                                        <br />
-                                                        <asp:RadioButton
-                                                            ID="RadioButton12"
-                                                            runat="server"
-                                                            GroupName="work"
-                                                            value="Seasonal"
-                                                            text="Seasonal"  />
-														</div>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-sm-2">Availability *</label>
-													<table style="width:10%">
-														<tr>
-															<td>Sundays</td>
-                                                            <td><asp:CheckBox
-                                                                ID="CheckBox1"
+                                                            <br />
+                                                            <asp:RadioButton
+                                                                ID="RadioButton12"
                                                                 runat="server"
-                                                                value="Sunday"/></td>
-														</tr>
-														<tr>
-															<td>Mondays</td>
-                                                            <td><asp:CheckBox
-                                                                ID="CheckBox2"
-                                                                runat="server" 
-                                                                value="Monday"/></td>
-															</tr>
-														<tr>
-															<td>Tuesdays</td>
-                                                            <td><asp:CheckBox
-                                                                ID="CheckBox3" 
-                                                                runat="server" 
-                                                                value="Tuesday"/></td>
-															</tr>
-														<tr>
+                                                                GroupName="work"
+                                                                value="Seasonal"
+                                                                text="Seasonal"  />
+														    </div>
+													    </div>
+												    </div>
+												    <div class="form-group">
+													    <label class="col-sm-2">Availability *</label>
+													    <table style="width:10%">
+														    <tr>
+															    <td>Sundays</td>
+                                                                <td><asp:CheckBox
+                                                                    ID="CheckBox1"
+                                                                    runat="server"
+                                                                    value="Sunday"/></td>
+														        </tr>
+														        <tr>
+															        <td>Mondays</td>
+                                                                    <td><asp:CheckBox
+                                                                        ID="CheckBox2"
+                                                                        runat="server" 
+                                                                        value="Monday"/></td>
+															        </tr>
+														        <tr>
+															        <td>Tuesdays</td>
+                                                                    <td><asp:CheckBox
+                                                                        ID="CheckBox3" 
+                                                                        runat="server" 
+                                                                        value="Tuesday"/></td>
+															        </tr>
+														        <tr>
 															<td>Wednesdays</td>
                                                             <td><asp:CheckBox 
                                                                 ID="CheckBox4" 
@@ -428,7 +428,7 @@
                                                                 ID="RadioButton1" 
                                                                 runat="server" 
                                                                 GroupName="permit" 
-                                                                text="Yes" />
+                                                                text="Yes" OnCheckedChanged="RadioButton1_CheckedChanged" />
                                                             <br />
                                                             <asp:RadioButton 
                                                                 ID="RadioButton2" 
@@ -465,18 +465,24 @@
                                                                 runat="server" 
                                                                 GroupName="rabies" 
                                                                 value="Yes"
-                                                                text="Yes" />
+                                                                text="Yes"
+                                                                Checked="true"
+                                                                OnCheckedChanged="RadioButton3_CheckedChanged"
+                                                                AutoPostBAck="true"
+                                                                />
                                                             <br />
                                                             <asp:RadioButton 
                                                                 ID="RadioButton4" 
                                                                 runat="server" 
                                                                 GroupName="rabies" 
                                                                 value="No" 
-                                                                text="No"  />
+                                                                text="No"
+                                                                AutoPostBAck="true"
+                                                                OnCheckedChanged="RadioButton4_CheckedChanged"  />
 														</div>
 													</div>
 												</div>
-												<div class="form-group">
+												<div class="form-group" id="visibleRabiesDoc" runat="server">
 													<label class="col-sm-3">If so, how recently? Please provide proof of vaccination. Upload an attachment.</label>
 														<div>
 															<select id="VacMonth" runat="server">
@@ -586,6 +592,8 @@
                                                                 GroupName="fortyLBS" 
                                                                 value="No" 
                                                                 text="No"  />
+                                                            <br />
+                                                        <br />
 														</div>
 													</div>
 												</div>
@@ -597,20 +605,28 @@
                                                             runat="server" 
                                                             GroupName="limitationsASN" 
                                                             value="Yes" 
-                                                            text="Yes" />
+                                                            text="Yes" 
+                                                            Checked="true"
+                                                            AutoPostBack="true"
+                                                            OnCheckedChanged="RadioButton7_CheckedChanged"/>
                                                             <br />
                                                         <asp:RadioButton 
                                                             ID="RadioButton8" 
                                                             runat="server" 
                                                             GroupName="limitationsASN" 
                                                             value="No" 
-                                                            text="No"  />
+                                                            text="No" 
+                                                             AutoPostBack="true"
+                                                            OnCheckedChanged="RadioButton8_CheckedChanged"/>
                                                         <asp:TextBox
                                                             ID="TextBox1"
                                                             runat="server"
                                                             class="form-control"
-                                                            TextMode="MultiLine">
+                                                            TextMode="MultiLine"
+                                                            required="required">
                                                         </asp:TextBox>
+                                                        <br />
+                                                        <br />
 													</div>
 													<label class="col-sm-3">A volunteer may be required to perform outdoor work -- year-round and regardless of weather conditions. Are you able to work outside during all seasons? If not, what are your limitations?</label>
 													<div class="col-sm-9">
@@ -619,20 +635,31 @@
                                                             runat="server" 
                                                             GroupName="limitationsWO" 
                                                             value="Yes" 
-                                                            text="Yes" />
+                                                            text="Yes" 
+                                                            Checked="true"
+                                                            AutoPostBack="true"
+                                                            OnCheckedChanged="RadioButton9_CheckedChanged"/>
                                                         <br />
                                                         <asp:RadioButton 
                                                             ID="RadioButton10" 
                                                             runat="server" 
                                                             GroupName="limitationsWO" 
                                                             value="No" 
-                                                            text="No"  />
+                                                            text="No" 
+                                                            AutoPostBack="true" 
+                                                            OnCheckedChanged="RadioButton10_CheckedChanged" />
 														 <asp:TextBox
                                                             ID="TextBox2"
                                                             runat="server"
                                                             class="form-control"
-                                                            TextMode="MultiLine">
+                                                            TextMode="MultiLine"
+                                                            required="required">
                                                         </asp:TextBox>
+                                                        <br />
+                                                        <br />
+                                                        <br />
+                                                        <br />
+                                                        <br />
 													</div>
 													<label class="col-sm-3">Why are you interested in volunteering as an outreach docent?</label>
 													<div class="col-sm-9">
@@ -640,8 +667,10 @@
                                                             ID="TextBox7"
                                                             runat="server"
                                                             class="form-control"
-                                                            TextMode="MultiLine">
+                                                            TextMode="MultiLine"
+                                                            required="required">
                                                         </asp:TextBox>
+                                                        <br />
 													</div>
 													<label class="col-sm-3">What’s an environmental or wildlife issue you feel passionately about, and why?</label>
 													<div class="col-sm-9">
@@ -649,8 +678,10 @@
                                                             ID="TextBox3"
                                                             runat="server"
                                                             class="form-control"
-                                                            TextMode="MultiLine">
+                                                            TextMode="MultiLine"
+                                                             required="required">
                                                         </asp:TextBox>
+                                                        <br />
 													</div>
 													<label class="col-sm-3">Do you have prior experience speaking to the public? Please describe.</label>
 													<div class="col-sm-9">
@@ -658,8 +689,10 @@
                                                             ID="TextBox4"
                                                             runat="server"
                                                             class="form-control"
-                                                            TextMode="MultiLine">
+                                                            TextMode="MultiLine"
+                                                             required="required">
                                                         </asp:TextBox>
+                                                        <br />
 													</div>
 													<label class="col-sm-3">Do you belong to any animal rights groups (PETA, The Humane Society, etc.)? If so, which ones? </label>
 													<div class="col-sm-9">
@@ -667,8 +700,10 @@
                                                             ID="TextBox5"
                                                             runat="server"
                                                             class="form-control"
-                                                            TextMode="MultiLine">
+                                                            TextMode="MultiLine"
+                                                             required="required">
                                                         </asp:TextBox>
+                                                        <br />
 													</div>                  
 													<label class="col-sm-3">What do you think you’d bring to the outreach volunteer team?</label>
 													<div class="col-sm-9">
@@ -676,7 +711,8 @@
                                                             ID="TextBox6"
                                                             runat="server"
                                                             class="form-control"
-                                                            TextMode="MultiLine">
+                                                            TextMode="MultiLine"
+                                                             required="required">
                                                         </asp:TextBox>
 													</div>
 													<div class="col-sm-12 col-sm-offset-3">Please upload a current resume.</div>

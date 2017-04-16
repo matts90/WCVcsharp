@@ -9,7 +9,8 @@ public partial class outreach : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        RadioButton1.Enabled = true;
+        RadioButton3.Enabled = true;
     }
 
     String firstName;
@@ -189,5 +190,27 @@ public partial class outreach : System.Web.UI.Page
     protected void Button2_Click(object sender, EventArgs e) {
 
     }
-    
+
+    protected void RadioButton1_CheckedChanged(object sender, EventArgs e) {
+        permitCategory.SelectedIndex = 0;
+
+    }
+    protected void RadioButton3_CheckedChanged(object sender, EventArgs e) {
+        visibleRabiesDoc.Visible = true;
+    }
+    protected void RadioButton4_CheckedChanged(object sender, EventArgs e) {
+        visibleRabiesDoc.Visible = false;
+    }
+    protected void RadioButton7_CheckedChanged(object sender, EventArgs e) {
+        TextBox1.Visible = true;
+    }
+    protected void RadioButton8_CheckedChanged(object sender, EventArgs e) {
+        TextBox1.Visible = false;
+    }
+    protected void RadioButton9_CheckedChanged(object sender, EventArgs e) {
+        TextBox2.Visible = true;
+    }
+    protected void RadioButton10_CheckedChanged(object sender, EventArgs e) {
+        TextBox2.Visible = false;
+    }
 }
