@@ -47,8 +47,8 @@ public partial class outreach : System.Web.UI.Page
         
 
     protected void Button1_Click(object sender, EventArgs e) {
+        String personID = "0";
 
-    
         try {
             firstName = tbfirstName.Text.ToString();
             lastName = tblastName.Text.ToString();
@@ -90,9 +90,9 @@ public partial class outreach : System.Web.UI.Page
             allergiesLimitsTB = TextBox1.Text.ToString();
             bool woIsChecked = RadioButton9.Checked;
             if (woIsChecked)
-                outdoorWorkTB = RadioButton9.Text.ToString();
+                outdoorWorkYN = RadioButton9.Text.ToString();
             else
-                outdoorWorkTB = RadioButton10.Text.ToString();
+                outdoorWorkYN = RadioButton10.Text.ToString();
             outdoorWorkTB = TextBox2.Text.ToString();
             interest = TextBox7.Text.ToString();
             passionateIssue = TextBox3.Text.ToString();
@@ -126,51 +126,66 @@ public partial class outreach : System.Web.UI.Page
                 "Person_AllergiesYN, " +
                 "Person_Allergies, " +
                 "Person_WorkOutside, " +
-                "Person_OutsideLimitations " +
+                "Person_OutsideLimitations, " +
                 "Person_Lift40Lbs, " +
-                "Person_RehabilitateYN, " +
-                "Person_LastVolunteered) VALUES(" +
-                    email + "', " +
-                    outreachPassword + "', " +
-                    firstName + "', " +
-                    lastName + "', " +
-                    email + "', " +
-                    phoneNum + "', " +
-                    addressProvided + "', " +
-                    City + "', " +
-                    State + "', " +
-                    zipcode + "', " +
-                    DOB + "', " +
-                    "'Applicant', " +
-                    rabiesVacYN + "'," +
-                    rabiesVacDate + "', " +
-                    rehabPermitCat + "'," +
-                    allergiesLimitsYN + "'," +
-                    allergiesLimitsTB + "'," +
-                    outdoorWorkYN + "'," +
-                    outdoorWorkTB + "'," +
-                    lift40 + "'," +
-                    rehabPermitYN + "'," +
-                    "'getdate())";
-                   
-                    /*
-                    interest;
-                    passionateIssue;
-                    publicSpeaking;
-                    animalRightsGroup;
-                    bringToTeam;
-            */
+                "Person_RehabilitateYN) VALUES('" +
+                    email + "', '" +
+                    outreachPassword + "', '" +
+                    "Applicant', '" +
+                    firstName + "', '" +
+                    lastName + "', '" +
+                    email + "', '" +
+                    phoneNum + "', '" +
+                    addressProvided + "', '" +
+                    City + "', '" +
+                    State + "', '" +
+                    zipcode + "', '" +
+                    DOB + "', '" +
+                    "Applicant', '" +
+                    rabiesVacYN + "', '" +
+                    rabiesVacDate + "', '" +
+                    rehabPermitCat + "', '" +
+                    allergiesLimitsYN + "', '" +
+                    allergiesLimitsTB + "', '" +
+                    outdoorWorkYN + "', '" +
+                    outdoorWorkTB + "', '" +
+                    lift40 + "', '" +
+                    rehabPermitYN + "')";
+            insert.ExecuteNonQuery();
 
+            insert.CommandText = "SELECT TOP 1 [Person_ID] FROM Person ORDER BY Person_ID DESC";
+            insert.ExecuteNonQuery();
+            System.Data.SqlClient.SqlDataReader reader = insert.ExecuteReader();
+            if (reader.HasRows) {
+                while (reader.Read()) {
+                    personID = reader.GetInt32(0).ToString();
+                }
+                reader.Close();
+            }
 
-
-
+            insert.CommandText =
+                "INSERT INTO OutreachApp(" +
+                "OutreachApp_PersonID, " +
+                "OutreachApp_WhyInterested, " +
+                "OutreachApp_PassionateWildlifeIssue, " +
+                "OutreachApp_ExperiencePublicSpeaking, " +
+                "OutreachApp_BelongToAnimalRightsGroup, " +
+                "OutreachApp_BringToTeam) VALUES('" +
+                    personID + "', '" +
+                    interest + "', '" +
+                    passionateIssue + "', '" +
+                    publicSpeaking + "', '" +
+                    animalRightsGroup + "', '" +
+                    bringToTeam + "')";
 
             insert.ExecuteNonQuery();
+            sc.Close();
         }
         catch (System.Data.SqlClient.SqlException sqlException) {
         }
-
+    
     }
+
     protected void Button2_Click(object sender, EventArgs e) {
 
     }
