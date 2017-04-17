@@ -122,6 +122,7 @@
                                                             runat="server"
                                                             ID="password"
                                                             required="required"
+                                                            type="password"
                                                             CSSclass="form-control">
                                                         </asp:TextBox>
 													</div>
@@ -132,6 +133,7 @@
 													 <asp:TextBox
                                                          runat="server"
                                                          ID="check"
+                                                         type="password"
                                                          required="required"
                                                          CSSclass="form-control">
 													 </asp:TextBox>

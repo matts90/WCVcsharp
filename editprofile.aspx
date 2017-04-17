@@ -1,3 +1,5 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="editprofile.aspx.cs" Inherits="editprofile" %>
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -144,59 +146,58 @@
 			<label class="col-lg-3 control-label">State:</label>
 			<div class="col-lg-8">
 			
-				<select name="state" required="required">
-				<option <?php if ($state == 'Virginia' ) echo 'selected' ; ?> value="Virginia">Virginia</option>
-				<option <?php if ($state == 'Alabama' ) echo 'selected' ; ?> value="Alabama">Alabama</option>
-				<option <?php if ($state == 'Alaska' ) echo 'selected' ; ?> value="Alaska">Alaska</option>
-				<option <?php if ($state == 'Arizona' ) echo 'selected' ; ?> value="Arizona">Arizona</option>
-				<option <?php if ($state == 'Arkansas' ) echo 'selected' ; ?> value="Arkansas">Arkansas</option>
-				<option <?php if ($state == 'California' ) echo 'selected' ; ?> value="California">California</option>
-				<option <?php if ($state == 'Colorado' ) echo 'selected' ; ?> value="Colorado">Colorado</option>
-				<option <?php if ($state == 'Connecticut' ) echo 'selected' ; ?> value="Connecticut">Connecticut</option>
-				<option <?php if ($state == 'Delaware' ) echo 'selected' ; ?> value="Delaware">Delaware</option>
-				<option <?php if ($state == 'Florida' ) echo 'selected' ; ?> value="Florida">Florida</option>
-				<option <?php if ($state == 'Georgia' ) echo 'selected' ; ?> value="Georgia">Georgia</option>
-				<option <?php if ($state == 'Hawaii' ) echo 'selected' ; ?> value="Hawaii">Hawaii</option>
-				<option <?php if ($state == 'Idaho' ) echo 'selected' ; ?> value="Idaho">Idaho</option>
-				<option <?php if ($state == 'Illinois' ) echo 'selected' ; ?> value="Illinois">Illinois</option>
-				<option <?php if ($state == 'Indiana' ) echo 'selected' ; ?> value="Indiana">Indiana</option>
-				<option <?php if ($state == 'Iowa' ) echo 'selected' ; ?> value="Iowa">Iowa</option>
-				<option <?php if ($state == 'Kansas' ) echo 'selected' ; ?> value="Kansas">Kansas</option>
-				<option <?php if ($state == 'Kentucky' ) echo 'selected' ; ?> value="Kentucky">Kentucky</option>
-				<option <?php if ($state == 'Louisiana' ) echo 'selected' ; ?> value="Louisiana">Louisiana</option>
-				<option <?php if ($state == 'Maine' ) echo 'selected' ; ?> value="Maine">Maine</option>
-				<option <?php if ($state == 'Maryland' ) echo 'selected' ; ?> value="Maryland">Maryland</option>
-				<option <?php if ($state == 'Massachusetts' ) echo 'selected' ; ?> value="Massachusetts">Massachusetts</option>
-				<option <?php if ($state == 'Michigan' ) echo 'selected' ; ?> value="Michigan">Michigan</option>
-				<option <?php if ($state == 'Minnesota' ) echo 'selected' ; ?> value="Minnesota">Minnesota</option>
-				<option <?php if ($state == 'Mississippi' ) echo 'selected' ; ?> value="Mississippi">Mississippi</option>
-				<option <?php if ($state == 'Missouri' ) echo 'selected' ; ?> value="Missouri">Missouri</option>
-				<option <?php if ($state == 'Montana' ) echo 'selected' ; ?> value="Montana">Montana</option>
-				<option <?php if ($state == 'Nebraska' ) echo 'selected' ; ?> value="Nebraska">Nebraska</option>
-				<option <?php if ($state == 'Nevada' ) echo 'selected' ; ?> value="Nevada">Nevada</option>
-				<option <?php if ($state == 'New Hampshire' ) echo 'selected' ; ?> value="New Hampshire">New Hampshire</option>
-				<option <?php if ($state == 'New Jersey' ) echo 'selected' ; ?> value="New Jersey">New Jersey</option>
-				<option <?php if ($state == 'New Mexico' ) echo 'selected' ; ?> value="New Mexico">New Mexico</option>
-				<option <?php if ($state == 'New York' ) echo 'selected' ; ?> value="New York">New York</option>
-				<option <?php if ($state == 'North Carolina' ) echo 'selected' ; ?> value="North Carolina">North Carolina</option>
-				<option <?php if ($state == 'North Dakota' ) echo 'selected' ; ?> value="North Dakota">North Dakota</option>
-				<option <?php if ($state == 'Ohio' ) echo 'selected' ; ?> value="Ohio">Ohio</option>
-				<option <?php if ($state == 'Oklahoma' ) echo 'selected' ; ?> value="Oklahoma">Oklahoma</option>
-				<option <?php if ($state == 'Oregon' ) echo 'selected' ; ?> value="Oregon">Oregon</option>
-				<option <?php if ($state == 'Pennsylvania' ) echo 'selected' ; ?> value="Pennsylvania">Pennsylvania</option>
-				<option <?php if ($state == 'Rhode Island' ) echo 'selected' ; ?> value="Rhode Island">Rhode Island</option>
-				<option <?php if ($state == 'South Carolina' ) echo 'selected' ; ?> value="South Carolina">South Carolina</option>
-				<option <?php if ($state == 'South Dakota' ) echo 'selected' ; ?> value="South Dakota">South Dakota</option>
-				<option <?php if ($state == 'Tennessee' ) echo 'selected' ; ?> value="Tennessee">Tennessee</option>
-				<option <?php if ($state == 'Texas' ) echo 'selected' ; ?> value="Texas">Texas</option>
-				<option <?php if ($state == 'Utah' ) echo 'selected' ; ?> value="Utah">Utah</option>
-				<option <?php if ($state == 'Virginia' ) echo 'selected' ; ?> value="Virginia">Virginia</option>
-				<option <?php if ($state == 'Vermont' ) echo 'selected' ; ?> value="Vermont">Vermont</option>
-				<option <?php if ($state == 'Washington' ) echo 'selected' ; ?> value="Washington">Washington</option>
-				<option <?php if ($state == 'West Virginia' ) echo 'selected' ; ?> value="West Virginia">West Virginia</option>
-				<option <?php if ($state == 'Wisconsin' ) echo 'selected' ; ?> value="Wisconsin">Wisconsin</option>
-				<option <?php if ($state == 'Wyoming' ) echo 'selected' ; ?> value="Wyoming">Wyoming</option>
-				</select> 
+				 <select id="homestate" runat="server">
+                                                            <option value="Virginia">Virginia</option>
+															<option value="Alabama">Alabama</option>
+															<option value="Alaska">Alaska</option>
+															<option value="Arizona">Arizona</option>
+															<option value="Arkansas">Arkansas</option>
+															<option value="California">California</option>
+															<option value="Colorado">Colorado</option>
+															<option value="Connecticut">Connecticut</option>
+															<option value="Delaware">Delaware</option>
+															<option value="Florida">Florida</option>
+															<option value="Georgia">Georgia</option>
+															<option value="Hawaii">Hawaii</option>
+															<option value="Idaho">Idaho</option>
+															<option value="Illinois">Illinois</option>
+															<option value="Indiana">Indiana</option>
+															<option value="Iowa">Iowa</option>
+															<option value="Kansas">Kansas</option>
+															<option value="Kentucky">Kentucky</option>
+															<option value="Louisiana">Louisiana</option>
+															<option value="Maine">Maine</option>
+															<option value="Maryland">Maryland</option>
+															<option value="Massachusetts">Massachusetts</option>
+															<option value="Michigan">Michigan</option>
+															<option value="Minnesota">Minnesota</option>
+															<option value="Mississippi">Mississippi</option>
+															<option value="Missouri">Missouri</option>
+															<option value="Montana">Montana</option>
+															<option value="Nebraska">Nebraska</option>
+															<option value="Nevada">Nevada</option>
+															<option value="New Hampshire">New Hampshire</option>
+															<option value="New Jersey">New Jersey</option>
+															<option value="New Mexico">New Mexico</option>
+															<option value="New York">New York</option>
+															<option value="North Carolina">North Carolina</option>
+															<option value="North Dakota">North Dakota</option>
+															<option value="Ohio">Ohio</option>
+															<option value="Oklahoma">Oklahoma</option>
+															<option value="Oregon">Oregon</option>
+															<option value="Pennsylvania">Pennsylvania</option>
+															<option value="Rhode Island">Rhode Island</option>
+															<option value="South Carolina">South Carolina</option>
+															<option value="South Dakota">South Dakota</option>
+															<option value="Tennessee">Tennessee</option>
+															<option value="Texas">Texas</option>
+															<option value="Utah">Utah</option>
+															<option value="Vermont">Vermont</option>
+															<option value="Washington">Washington</option>
+															<option value="West Virginia">West Virginia</option>
+															<option value="Wisconsin">Wisconsin</option>
+															<option value="Wyoming">Wyoming</option>
+                                                        </select> 
 			</div>
 		</div>
 		<div class="form-group">
@@ -322,10 +323,10 @@ error_reporting(E_ALL);
     <script src="js/global.js"></script>
 
     <script type="text/javascript">
-    $(document).ready(function(){
-        // Add markItUp! to your textarea in one line
-        $('.markItUpTextarea').markItUp(mySettings, { root:'markitup/skins/simple/' });
-    });
+        $(document).ready(function () {
+            // Add markItUp! to your textarea in one line
+            $('.markItUpTextarea').markItUp(mySettings, { root: 'markitup/skins/simple/' });
+        });
     </script>
 </body>
 </html>
