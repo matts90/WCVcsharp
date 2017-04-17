@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class outreach : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) {
@@ -41,45 +42,23 @@ public partial class outreach : System.Web.UI.Page {
     //rehab permit
     //rabies vacc
     //resume
-    /*
-    protected void DOBMonthChange(object sender, EventArgs e) {
-        if (DOBMonth.Value.ToString() == "00") {
 
-            
-        }
-        if (DOBMonth.Value.ToString() == "02") {
 
-        }
-        if (DOBMonth.Value.ToString() == "01" ||
-            DOBMonth.Value.ToString() == "03" ||
-            DOBMonth.Value.ToString() == "05" ||
-            DOBMonth.Value.ToString() == "07" ||
-            DOBMonth.Value.ToString() == "08" ||
-            DOBMonth.Value.ToString() == "10" ||
-            DOBMonth.Value.ToString() == "12") {
-
-        }
-    }
-    */
-    
     protected void Button1_Click(object sender, EventArgs e) {
         String personID = "0";
-        if (DOBMonth.Value.ToString() == "00") {
+        string pRfilename = Path.GetFileName(FileUpLoad1.FileName);
+        FileInfo temp2 = new FileInfo(Server.MapPath("~/") + pRfilename);
 
-            
-        }
-        if (DOBMonth.Value.ToString() == "02") {
 
-        }
-        if (DOBMonth.Value.ToString() == "01" ||
-            DOBMonth.Value.ToString() == "03" ||
-            DOBMonth.Value.ToString() == "05" ||
-            DOBMonth.Value.ToString() == "07" ||
-            DOBMonth.Value.ToString() == "08" ||
-            DOBMonth.Value.ToString() == "10" ||
-            DOBMonth.Value.ToString() == "12") {
 
-        }
+        //String temp1 = permitRehabVA.PostedFile.FileName;
+        //FileInfo temp2 = new FileInfo(FileUpLoad1.FileName);
+        String temp3 = temp2.FullName;
+        FileInfo permitRehabFI = new FileInfo(temp3);
+        byte[] permitRehabFile = BitConverter.GetBytes(1);
+        String permitFilePath = permitRehabFI.FullName;
+        String permitRehabType = permitRehabFI.Extension;
+        long permitRehabLength = 0;
 
         try {
             firstName = tbfirstName.Text.ToString();
@@ -91,11 +70,7 @@ public partial class outreach : System.Web.UI.Page {
             City = city.Text.ToString();
             State = homestate.Value.ToString();
             zipcode = zip.Text.ToString();
-            
-            DOB = DOBMonth.Value.ToString() + "/" +
-                DOBDay.Value.ToString() + "/" +
-                DOBYear.Value.ToString();
-            dayOfWeek = "a";
+            DOB = DOBDatePick.Text.ToString();
             bool rpIsChecked = RadioButton1.Checked;
             if (rpIsChecked) {
                 rehabPermitYN = RadioButton1.Text.ToString();
@@ -108,9 +83,19 @@ public partial class outreach : System.Web.UI.Page {
             bool rvIsChecked = RadioButton3.Checked;
             if (rvIsChecked){
                 rabiesVacYN = RadioButton3.Text.ToString();
-                rabiesVacDate = VacMonth.Value.ToString() + "/" +
-                VacDay.Value.ToString() + "/" +
-                VacYear.Value.ToString();
+                rabiesVacDate = RabiesDatePick.Text.ToString();
+                using (var stream = new FileStream(permitFilePath, FileMode.Open, FileAccess.Read)) {
+                    using (var reader3 = new BinaryReader(stream)) {
+                        permitRehabFile = reader3.ReadBytes((int)stream.Length);
+                        permitRehabLength = permitRehabFile.Length;
+                    }
+                }
+
+
+
+
+
+
             }
             else {
                 rabiesVacYN = RadioButton4.Text.ToString();
@@ -145,6 +130,11 @@ public partial class outreach : System.Web.UI.Page {
             publicSpeaking = TextBox4.Text.ToString();
             animalRightsGroup = TextBox5.Text.ToString();
             bringToTeam = TextBox6.Text.ToString();
+
+
+
+
+
 
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection();
             sc.ConnectionString = @"Server=LOCALHOST;Database=Wildlife;Trusted_Connection=Yes;";
@@ -225,12 +215,52 @@ public partial class outreach : System.Web.UI.Page {
                     bringToTeam + "')";
 
             insert.ExecuteNonQuery();
+
+            insert.CommandText =
+                "INSERT INTO Documentation(" +
+                "Documentation_PersonID, " +
+                "Documentation_TypeOfDocument, " +
+                "Documentation_FileName, " +
+                "Documentation_FileType, " +
+                "Documentation_FileSize, " +
+                "Documentation_FileContent) VALUES('" +
+                    personID + "', '" +
+                    "RehabPermit', '" +
+                    pRfilename + "', '" +
+                    permitRehabType + "', '" +
+                    permitRehabLength + "', " +
+                    "@permitBinary)";
+
+
+            insert.Parameters.Add("@permitBinary", System.Data.SqlDbType.VarBinary, permitRehabFile.Length).Value = permitRehabFile;
+
+            insert.ExecuteNonQuery();
+
             sc.Close();
         }
         catch (System.Data.SqlClient.SqlException sqlException) {
         }
 
     }
+
+    /*
+    public static void databaseFilePut(string varFilePath) {
+        byte[] file;
+        using (var stream = new FileStream(varFilePath, FileMode.Open, FileAccess.Read)) {
+            using (var reader = new BinaryReader(stream)) {
+                file = reader.ReadBytes((int)stream.Length);
+            }
+        }
+        using (var varConnection = Locale.sqlConnectOneTime(Locale.sqlDataConnectionDetails))
+        using (var sqlWrite = new SqlCommand("INSERT INTO Raporty (RaportPlik) Values(@File)", varConnection)) {
+            sqlWrite.Parameters.Add("@File", SqlDbType.VarBinary, file.Length).Value = file;
+            sqlWrite.ExecuteNonQuery();
+        }
+    }
+
+    */
+
+
 
     protected void Button2_Click(object sender, EventArgs e) {
 
