@@ -251,7 +251,8 @@
                                                     <div class="col-sm-10">
                                                         <asp:TextBox 
                                                             id="DOBDatePick"
-                                                            runat="server"/>
+                                                            runat="server"
+                                                            required="required"/>
                                                         (MM/DD/YYYY)
                                                     </div>
 												</div>
@@ -375,26 +376,9 @@
 														</div>
                                                         <div>
                                                             <span class="btn btn-default btn-file">
-                                                            <asp:FileUpLoad id="FileUpLoad1" runat="server" CausesValidation="false" UseSubmitBehavior="false" />
+                                                            <asp:FileUpLoad id="FileUpLoad1" runat="server" required="required"/>
                                                                 </span>
                                                         </div>
-                                                    <!--
-														<div class="fileinput fileinput-new" data-provides="fileinput">
-															<span class="btn btn-default btn-file">
-                                                                
-                                                                
-                                                                
-                                                                
-                                                            <!--    <input name="permitRehabVA" id="permitRehabVA" type="file" runat="server" /> --
-															
-                                                            
-                                                            
-                                                            
-                                                            </span>
-															<span class="fileinput-filename"></span>
-															<span class="fileinput-new"></span>
-														</div>
-                                                        -->
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3">Are you rabies vaccinated?</label>
@@ -426,18 +410,15 @@
 													<div>
                                                          <asp:TextBox 
                                                             id="RabiesDatePick"
-                                                            runat="server"/>
+                                                            runat="server"
+                                                             required="required"/>
                                                         (MM/DD/YYYY)
 													</div>
-													<div class="fileinput fileinput-new" data-provides="fileinput">
-														<span class="btn btn-default btn-file">
-															<input
-                                                                name="rabbiesDocumentation" 
-                                                                id = "rabbiesDocumentation" 
-                                                                type="file" multiple /></span>
-														<span class="fileinput-filename"></span>
-														<span class="fileinput-new"></span>
-													</div>
+													<div>
+                                                        <span class="btn btn-default btn-file">
+                                                        <asp:FileUpLoad id="FileUpLoad2" runat="server" required="required"/>
+                                                            </span>
+                                                    </div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3">Are you able to lift 40 lbs?</label>
@@ -501,7 +482,6 @@
                                                             GroupName="limitationsWO" 
                                                             value="Yes" 
                                                             text="Yes" 
-                                                            Checked="true"
                                                             AutoPostBack="true"
                                                             OnCheckedChanged="RadioButton9_CheckedChanged"/>
                                                         <br />
@@ -511,6 +491,7 @@
                                                             GroupName="limitationsWO" 
                                                             value="No" 
                                                             text="No" 
+                                                            Checked="true"
                                                             AutoPostBack="true" 
                                                             OnCheckedChanged="RadioButton10_CheckedChanged" />
 														 <asp:TextBox
@@ -582,17 +563,11 @@
                                                         <br />
 													</div>
 													<label class="col-sm-3">Please upload a current resume.</label>
-													<div class="col-sm-9 fileinput fileinput-new" data-provides="fileinput">
-														<span class="btn btn-default btn-file">
-															<input 
-                                                                name="userFile" 
-                                                                id = "userFile" 
-                                                                type="file" 
-                                                                multiple />
-														</span>
-														<span class="fileinput-filename"></span>
-														<span class="fileinput-new"></span>
-														</div>
+													<div>
+                                                        <span class="btn btn-default btn-file">
+                                                        <asp:FileUpLoad id="FileUpLoad3" runat="server" required="required"/>
+                                                            </span>
+                                                    </div>
 												</div>
 											</fieldset>
 											<footer class="panel-footer">
@@ -607,7 +582,9 @@
                                                     runat="server"
                                                     Text="Reset" 
                                                     class="btn btn-default" 
-                                                    OnClick="Button2_Click"/>
+                                                    href="outreach.aspx"
+                                                    CausesValidation="false"
+                                                    UseSubmitBehavior="false"/>
 											</footer>
                                         </form>
 									</div>
