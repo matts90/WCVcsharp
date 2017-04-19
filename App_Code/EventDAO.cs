@@ -28,7 +28,7 @@ public class EventDAO
     {
         System.Data.SqlClient.SqlConnection sc;
         sc = new System.Data.SqlClient.SqlConnection();
-        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;";
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=Wildlife;Trusted_Connection=Yes;";
 
 
         List<CalendarEvent> events = new List<CalendarEvent>();
@@ -66,7 +66,7 @@ public class EventDAO
 
         System.Data.SqlClient.SqlConnection sc;
         sc = new System.Data.SqlClient.SqlConnection();
-        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;";
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=Wildlife;Trusted_Connection=Yes;";
 
         SqlCommand cmd = new SqlCommand("UPDATE event SET title=@title, description=@description WHERE event_id=@event_id", sc);
         cmd.Parameters.AddWithValue("@title", title);
@@ -86,7 +86,7 @@ public class EventDAO
     {
         System.Data.SqlClient.SqlConnection sc;
         sc = new System.Data.SqlClient.SqlConnection();
-        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;"; ;
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=Wildlife;Trusted_Connection=Yes;"; ;
         SqlCommand cmd = new SqlCommand("UPDATE event SET event_start=@event_start, event_end=@event_end WHERE event_id=@event_id", sc);
         cmd.Parameters.AddWithValue("@event_start", start);
         cmd.Parameters.AddWithValue("@event_end", end);
@@ -103,7 +103,7 @@ public class EventDAO
     {
         System.Data.SqlClient.SqlConnection sc;
         sc = new System.Data.SqlClient.SqlConnection();
-        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;";
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=Wildlife;Trusted_Connection=Yes;";
         SqlCommand cmd = new SqlCommand("DELETE FROM event WHERE (event_id = @event_id)", sc);
         cmd.Parameters.AddWithValue("@event_id", id);
         using (sc)
@@ -121,7 +121,7 @@ public class EventDAO
         //insert
         System.Data.SqlClient.SqlConnection sc;
         sc = new System.Data.SqlClient.SqlConnection();
-        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=test1;Trusted_Connection=Yes;";
+        sc.ConnectionString = @"Server =ANDREW-HP\MSSMLBIZ;Database=Wildlife;Trusted_Connection=Yes;";
         SqlCommand cmd = new SqlCommand("INSERT INTO event(title, description, event_start, event_end) VALUES(@title, @description, @event_start, @event_end)", sc);
         cmd.Parameters.AddWithValue("@title", cevent.title);
         cmd.Parameters.AddWithValue("@description", cevent.description);

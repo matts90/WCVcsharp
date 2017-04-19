@@ -386,6 +386,17 @@ CONSTRAINT PK_AvailabilityTransporter PRIMARY KEY (AvailabilityTransporter_ID),
 CONSTRAINT FK_AvailabilityTransporter_AvailabilityPersonID FOREIGN KEY (AvailabilityTransporter_AvailabilityPersonID) REFERENCES AvailabilityPerson(AvailabilityPerson_ID));
 
 
+CREATE TABLE event ( 
+event_id                            INTEGER NOT NULL IDENTITY,
+title								varchar(100),
+description							varchar(200),
+event_start							datetime,
+event_end							datetime,
+
+
+
+CONSTRAINT PK_Event PRIMARY KEY (event_id)); 
+
 
 
 SET GLOBAL event_scheduler = ON;
